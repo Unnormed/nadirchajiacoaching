@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wandelcoaching · BABL · Nadir Chajia</title>
+<meta name="description" content="Wandelend coachen in de natuur. Kleine groepen, vanaf zomer 2026. Laat je gegevens achter en blijf op de hoogte.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --babl-green: #1f3c2c;
+    --babl-green-deep: #15281f;
+    --babl-moss: #8b9d7a;
+    --babl-cream: #f4ede1;
+    --babl-sand: #e8ddc8;
+    --babl-ochre: #c68954;
+    --babl-clay: #a86a3d;
+    --babl-lavender: #dcd6e0;
+    --babl-ink: #1a1a1a;
+    --babl-ink-60: rgba(26, 26, 26, 0.6);
+    --babl-ink-40: rgba(26, 26, 26, 0.4);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --container-max: 1280px;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--babl-ink);
+    background: var(--babl-cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .shell {
+    max-width: calc(var(--container-max) + 64px);
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--babl-green);
+  }
+
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: 1;
+  }
+
+  .logo-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--babl-ochre);
+    letter-spacing: 0.3px;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--babl-ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--babl-green); }
+
+  .nav-links a.active {
+    color: var(--babl-green);
+    font-weight: 500;
+  }
+
+  .nav-cta {
+    padding: 10px 18px;
+    background: var(--babl-ochre);
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--babl-clay); transform: translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: var(--babl-green);
+    color: var(--babl-cream);
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 64px 80px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.9s ease-out both;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(198, 137, 84, 0.15), transparent 45%),
+      radial-gradient(circle at 15% 85%, rgba(139, 157, 122, 0.18), transparent 45%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .coming-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 14px;
+    background: rgba(244, 237, 225, 0.1);
+    border: 1px solid rgba(244, 237, 225, 0.25);
+    border-radius: 30px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--babl-cream);
+    margin-bottom: 32px;
+    backdrop-filter: blur(4px);
+  }
+
+  .coming-badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--babl-ochre);
+    box-shadow: 0 0 0 3px rgba(198, 137, 84, 0.25);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 1.02;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--babl-ochre);
+  }
+
+  .hero-body {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.85;
+    max-width: 580px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 28px;
+    background: rgba(244, 237, 225, 0.08);
+    border-radius: 40px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-meta .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-meta .item svg {
+    stroke: var(--babl-ochre);
+    stroke-width: 1.4;
+    fill: none;
+  }
+
+  .hero-meta .divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(244, 237, 225, 0.25);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 18px 30px;
+    background: var(--babl-ochre);
+    color: #fff;
+    border-radius: 40px;
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.3);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-2px) scale(1.015);
+    background: var(--babl-clay);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.38);
+  }
+
+  .hero-cta svg { transition: transform 0.3s; }
+  .hero-cta:hover svg { transform: translateX(3px); }
+
+  .hero-cta-note {
+    margin-top: 18px;
+    font-size: 13px;
+    font-style: italic;
+    font-family: var(--font-display);
+    opacity: 0.7;
+    letter-spacing: 0.2px;
+  }
+
+  /* ---------- INTRO PROSE ---------- */
+  .intro {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 64px;
+  }
+
+  .intro-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .intro h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 1.12;
+    color: var(--babl-ink);
+    margin-bottom: 32px;
+  }
+
+  .intro h2 em { font-style: italic; color: var(--babl-green); }
+
+  .intro p {
+    font-size: 17px;
+    color: var(--babl-ink-60);
+    line-height: 1.85;
+    margin-bottom: 22px;
+  }
+
+  .intro p:last-of-type { margin-bottom: 0; }
+
+  .intro p strong {
+    color: var(--babl-ink);
+    font-weight: 500;
+  }
+
+  /* ---------- WAT HET IS ---------- */
+  .pillars {
+    background: var(--babl-sand);
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 64px;
+  }
+
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .pillars-header .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .pillars-header h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.1;
+    color: var(--babl-ink);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pillars-header h2 em { font-style: italic; color: var(--babl-green); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pillar {
+    background: #fff;
+    padding: 44px 36px;
+    border-radius: var(--radius);
+    transition: transform 0.35s, box-shadow 0.35s;
+  }
+
+  .pillar:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(31, 60, 44, 0.1);
+  }
+
+  .pillar .num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--babl-ochre);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .pillar h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--babl-green);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .pillar p {
+    font-size: 14.5px;
+    color: var(--babl-ink-60);
+    line-height: 1.75;
+  }
+
+  /* ---------- VOOR WIE ---------- */
+  .audience {
+    background: var(--babl-green);
+    color: var(--babl-cream);
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 64px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .audience-left .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .audience-left h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .audience-left h2 em { font-style: italic; color: var(--babl-ochre); }
+
+  .audience-left p {
+    font-size: 15px;
+    opacity: 0.85;
+    line-height: 1.75;
+  }
+
+  .audience-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .audience-list li {
+    padding: 22px 0;
+    border-top: 1px solid rgba(244, 237, 225, 0.18);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .audience-list li:first-child { border-top: none; padding-top: 0; }
+  .audience-list li:last-child { padding-bottom: 0; }
+
+  .audience-list .marker {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(244, 237, 225, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--babl-ochre);
+    margin-top: 2px;
+  }
+
+  .audience-list .text {
+    font-size: 16px;
+    line-height: 1.65;
+    opacity: 0.92;
+  }
+
+  .audience-list .text strong {
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  /* ---------- INTEREST FORM CTA ---------- */
+  .interest {
+    background: var(--babl-green-deep);
+    color: var(--babl-cream);
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 120px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .interest::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(198, 137, 84, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(139, 157, 122, 0.12), transparent 40%);
+    pointer-events: none;
+  }
+
+  .interest > * { position: relative; }
+
+  .interest .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  .interest h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.05;
+    max-width: 720px;
+    margin: 0 auto 20px;
+  }
+
+  .interest h2 em { font-style: italic; color: var(--babl-ochre); }
+
+  .interest p {
+    font-size: 16.5px;
+    opacity: 0.82;
+    max-width: 560px;
+    margin: 0 auto 44px;
+    line-height: 1.7;
+  }
+
+  .interest-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 32px;
+    background: var(--babl-ochre);
+    color: #fff;
+    border-radius: 40px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  }
+
+  .interest-pill:hover {
+    transform: translateY(-3px) scale(1.015);
+    background: var(--babl-clay);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.42);
+  }
+
+  .interest-pill svg { transition: transform 0.3s; }
+  .interest-pill:hover svg { transform: translateX(3px); }
+
+  .interest .small {
+    display: block;
+    margin-top: 28px;
+    font-size: 13px;
+    opacity: 0.6;
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--babl-ink-60);
+  }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--babl-green);
+    margin-bottom: 8px;
+  }
+
+  .footer-meta {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-meta a {
+    color: var(--babl-ink-60);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-meta a:hover { color: var(--babl-green); }
+
+  /* ---------- ANIMATIE ---------- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero, .intro, .pillars, .status, .interest {
+      padding: 64px 32px;
+    }
+    .audience {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 64px 32px;
+    }
+    .hero h1 { font-size: 52px; }
+    .hero-body { font-size: 16px; }
+    .hero-meta { flex-direction: column; gap: 12px; padding: 18px 24px; }
+    .hero-meta .divider { display: none; }
+    .intro h2, .pillars-header h2, .status-header h2, .audience-left h2 { font-size: 34px; }
+    .interest h2 { font-size: 38px; }
+    .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
+    .nav-links { display: none; }
+    .nav { padding: 14px 20px; }
+    .timeline::before { left: 18px; }
+    .step { padding-left: 60px; }
+    .step .marker { left: 4px; }
+  }
+
+  @media (max-width: 520px) {
+    .shell { padding: 12px; }
+    .hero { padding: 56px 24px; }
+    .hero h1 { font-size: 40px; }
+    .interest { padding: 64px 24px; }
+    .interest h2 { font-size: 30px; }
+    .interest-pill { padding: 16px 24px; flex-wrap: wrap; justify-content: center; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <a href="./index.html" class="logo">
+      <span class="logo-name">Nadir Chajia</span>
+      <span class="logo-label">coaching</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html#methode">De Methode</a></li>
+      <li><a href="./index.html#traject">Het Traject</a></li>
+      <li><a href="#" class="active">Wandelcoaching</a></li>
+      <li><a href="./index.html#over">Over Nadir</a></li>
+    </ul>
+    <a href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener" class="nav-cta">
+      Gratis kennismaking
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="coming-badge">
+        <span class="dot"></span>
+        Coming summer 2026
+      </span>
+      <h1>Coaching die <em>beweegt</em>.<br>Letterlijk.</h1>
+      <p class="hero-body">
+        Vanaf de zomer van 2026 begeleid ik kleine groepen op wandelende coachingsessies. Buiten, in de natuur, op het ritme van je voeten. Hetzelfde fundament als de BABL Methode, maar dan in beweging.
+      </p>
+      <div class="hero-meta">
+        <span class="item">
+          <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1v12M2 7h10"/></svg>
+          Kleine groepen
+        </span>
+        <span class="divider"></span>
+        <span class="item">
+          <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 11l4-6 3 4 3-5"/></svg>
+          In de natuur
+        </span>
+        <span class="divider"></span>
+        <span class="item">
+          <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5"/><path d="M7 4v3l2 1"/></svg>
+          Beperkte plaatsen
+        </span>
+      </div>
+      <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="hero-cta">
+        Houd me op de hoogte
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="hero-cta-note">Beperkte plaatsen. Wie zich nu aanmeldt, hoort als eerste wanneer de inschrijvingen openen.</p>
+    </div>
+  </section>
+
+  <!-- ============ INTRO PROSE ============ -->
+  <section class="intro reveal">
+    <div class="intro-inner">
+      <span class="kicker">Het concept</span>
+      <h2>Sommige gesprekken horen niet <em>achter een tafel</em>.</h2>
+      <p>
+        Een wandeling doet iets met een gesprek. Het hoofd komt los, de schouders ontspannen, de vragen worden zachter. Wat in een coachingruimte soms zwaar voelt, krijgt in beweging een andere lading.
+      </p>
+      <p>
+        Daarom werk ik aan een nieuwe vorm van begeleiding: <strong>wandelcoaching in kleine groepen</strong>, in de natuur, vanaf de zomer van 2026. Geen retraite, geen workshop. Een doorlopend traject met dezelfde rode draad als BABL: balans, energie, richting. Maar dan in een setting die zichzelf laat voelen.
+      </p>
+      <p>
+        Geen telefoons. Geen schermen. Wel mensen, paden, en de tijd om door te denken zonder dat de wereld eraan trekt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DRIE PIJLERS ============ -->
+  <section class="pillars reveal">
+    <div class="pillars-header">
+      <span class="kicker">Drie pijlers</span>
+      <h2>Wandelend, samen, <em>onderbouwd</em>.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>Wandelend coachen</h3>
+        <p>Beweging is geen decor. Ze is onderdeel van het werk. Wandelen verlaagt de drempel om dingen te zeggen die binnen vaak blijven hangen, en helpt om gedachten te ordenen op een manier die zitten niet kan.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>Kleine groepen</h3>
+        <p>Beperkte trajecten met een handvol deelnemers. Klein genoeg om persoonlijk te blijven, groot genoeg om elkaar verder te brengen. Niet één coach met een groep, maar een groep waarin iedereen er voor elkaar is.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>Op het BABL fundament</h3>
+        <p>De methodiek blijft dezelfde. Bewustwording, afstemmen, bouwen, leven, gewoontes, integratie. Wat verandert is de plek waar het gebeurt en het ritme dat erbij hoort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VOOR WIE ============ -->
+  <section class="audience reveal">
+    <div class="audience-left">
+      <span class="kicker">Voor wie</span>
+      <h2>Niet voor <em>iedereen</em>.</h2>
+      <p>
+        Wandelcoaching werkt het best voor mensen die genoeg hebben aan een uur op een stoel en die voelen dat ze beter denken in beweging. Hieronder staat voor wie dit aanbod is bedoeld.
+      </p>
+    </div>
+    <ul class="audience-list">
+      <li>
+        <span class="marker">01</span>
+        <span class="text">
+          <strong>Werkende mensen</strong> die merken dat hun beste ideeën komen tijdens een wandeling, niet tijdens een vergadering.
+        </span>
+      </li>
+      <li>
+        <span class="marker">02</span>
+        <span class="text">
+          <strong>Mensen die de natuur missen</strong> in hun werkweek en die voelen dat dat geen luxe is, maar een gemis.
+        </span>
+      </li>
+      <li>
+        <span class="marker">03</span>
+        <span class="text">
+          <strong>Wie liever in een groep werkt</strong> dan een-op-een. Niet uit gemak, maar omdat anderen je verder kunnen brengen.
+        </span>
+      </li>
+      <li>
+        <span class="marker">04</span>
+        <span class="text">
+          <strong>Wie al vermoedt</strong> dat hun work-life balans niet structureel verandert door betere agenda-discipline alleen.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ INTEREST CTA ============ -->
+  <section class="interest reveal" id="interesse">
+    <span class="kicker">Klaar om mee te lopen?</span>
+    <h2>Laat je gegevens achter.<br><em>Jij hoort het eerst.</em></h2>
+    <p>
+      Heb je interesse, maar is de timing nog niet rond? Vul het korte formulier in. Je hoort als eerste wanneer de data, locaties en details bekend zijn. Geen nieuwsbrief, geen spam. Alleen bericht wanneer dit aanbod live gaat.
+    </p>
+    <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="interest-pill">
+      Houd me op de hoogte
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <span class="small">Je gegevens worden alleen gebruikt om je te informeren over wandelcoaching.</span>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer-tagline">Start klein. Groei groot.</p>
+    <p class="footer-meta">
+      Nadir Chajia · Accredited Life Coach · © BABL Methode  ·
+      <a href="./index.html">Terug naar de hoofdpagina</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll reveal animatie
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
