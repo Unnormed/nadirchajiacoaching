@@ -63,14 +63,29 @@
   }
 
   /* ---------- NAV ---------- */
+  .nav-wrap {
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+  }
+
   .nav {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
     border-radius: var(--radius);
     padding: 18px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, background 0.3s, padding 0.3s;
+  }
+
+  .nav-wrap.scrolled .nav {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 28px rgba(31, 60, 44, 0.08);
+    padding: 14px 32px;
   }
 
   .logo {
@@ -87,6 +102,7 @@
     font-weight: 500;
     letter-spacing: 0.2px;
     line-height: 1;
+    white-space: nowrap;
   }
 
   .logo-label {
@@ -887,6 +903,43 @@
     letter-spacing: 0.5px;
   }
 
+
+  /* ---------- MOBILE NAV TOGGLE ---------- */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+  }
+
+  .nav-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 1.6px;
+    background: var(--babl-ink);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.2s;
+    transform-origin: center;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(6.6px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-6.6px) rotate(-45deg);
+  }
+
   /* ---------- ANIMATIE ---------- */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -920,7 +973,91 @@
     .cta-final h2 { font-size: 42px; }
     .method-content { padding: 48px 32px; }
     .method-content h2, .about-content h2 { font-size: 34px; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; order: 3; }
+
+    .nav {
+      flex-wrap: wrap;
+      position: relative;
+      gap: 8px;
+    }
+
+    .nav .nav-cta {
+      order: 2;
+      padding: 8px 14px;
+      font-size: 12px;
+      gap: 6px;
+    }
+
+    .nav .nav-cta svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .nav .logo {
+      order: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .nav .logo-name {
+      font-size: 18px;
+    }
+
+    .nav .logo-label {
+      font-size: 13px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 0;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(31, 60, 44, 0.1);
+      flex-basis: 100%;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 14px 4px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(31, 60, 44, 0.06);
+    }
+
+    .nav-links li:last-child a {
+      border-bottom: none;
+    }
+
+    .nav-links .mobile-cta {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 14px 22px;
+      background: var(--babl-ochre);
+      color: #fff;
+      border-radius: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-bottom: none !important;
+    }
+
+    .nav-links .mobile-cta:hover {
+      background: var(--babl-clay);
+    }
     .nav { padding: 14px 20px; }
   }
 
@@ -940,11 +1077,17 @@
 <div class="shell">
 
   <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
   <nav class="nav">
     <a href="#" class="logo">
       <span class="logo-name">Nadir Chajia</span>
       <span class="logo-label">coaching</span>
     </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#methode">De Methode</a></li>
       <li><a href="#traject">Het Traject</a></li>
@@ -956,6 +1099,7 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>
   </nav>
+  </div>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
@@ -1208,7 +1352,50 @@
 </div>
 
 <script>
-  // Scroll reveal animatie
+
+
+  // Sticky nav scroll state
+  (function() {
+    const wrap = document.querySelector('.nav-wrap');
+    if (!wrap) return;
+    function check() {
+      wrap.classList.toggle('scrolled', window.scrollY > 8);
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  // Mobile hamburger drawer
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      links.classList.toggle('open', open);
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on any link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close when resizing back to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+
+    // Scroll reveal animatie
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

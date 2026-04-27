@@ -55,14 +55,29 @@
   }
 
   /* ---------- NAV ---------- */
+  .nav-wrap {
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+  }
+
   .nav {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
     border-radius: var(--radius);
     padding: 18px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, background 0.3s, padding 0.3s;
+  }
+
+  .nav-wrap.scrolled .nav {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 28px rgba(31, 60, 44, 0.08);
+    padding: 14px 32px;
   }
 
   .logo {
@@ -79,6 +94,7 @@
     font-weight: 500;
     letter-spacing: 0.2px;
     line-height: 1;
+    white-space: nowrap;
   }
 
   .logo-label {
@@ -602,6 +618,91 @@
 
   .footer-meta a:hover { color: var(--babl-green); }
 
+
+  /* ---------- MOBILE NAV TOGGLE ---------- */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+  }
+
+  .nav-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 1.6px;
+    background: var(--babl-ink);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.2s;
+    transform-origin: center;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(6.6px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-6.6px) rotate(-45deg);
+  }
+
+
+  /* ---------- WANDELING FOOTSTEPS ---------- */
+  .footsteps-trail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .footstep {
+    position: absolute;
+    width: 26px;
+    height: 38px;
+    color: var(--babl-green);
+    opacity: 0;
+    transform: scale(0.4) translateY(14px);
+    transition: opacity 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+  }
+
+  .footstep svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .footstep.left  { left: calc(50% - 80px); transform-origin: 60% 70%; }
+  .footstep.right { left: calc(50% + 54px); transform-origin: 40% 70%; }
+
+  .footstep.left.placed  { opacity: 0.14; transform: scale(1) rotate(-8deg) translateY(0); }
+  .footstep.right.placed { opacity: 0.14; transform: scale(1) rotate(8deg) translateY(0); }
+
+  /* On wider screens, push the footsteps further out toward the edges */
+  @media (min-width: 1280px) {
+    .footstep.left  { left: calc(50% - 240px); }
+    .footstep.right { left: calc(50% + 214px); }
+  }
+
+  /* Hide on smaller screens — keeps the layout calm */
+  @media (max-width: 1100px) {
+    .footsteps-trail { display: none; }
+  }
+
   /* ---------- ANIMATIE ---------- */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -636,7 +737,91 @@
     .intro h2, .pillars-header h2, .status-header h2, .audience-left h2 { font-size: 34px; }
     .interest h2 { font-size: 38px; }
     .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; order: 3; }
+
+    .nav {
+      flex-wrap: wrap;
+      position: relative;
+      gap: 8px;
+    }
+
+    .nav .nav-cta {
+      order: 2;
+      padding: 8px 14px;
+      font-size: 12px;
+      gap: 6px;
+    }
+
+    .nav .nav-cta svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .nav .logo {
+      order: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .nav .logo-name {
+      font-size: 18px;
+    }
+
+    .nav .logo-label {
+      font-size: 13px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 0;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(31, 60, 44, 0.1);
+      flex-basis: 100%;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 14px 4px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(31, 60, 44, 0.06);
+    }
+
+    .nav-links li:last-child a {
+      border-bottom: none;
+    }
+
+    .nav-links .mobile-cta {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 14px 22px;
+      background: var(--babl-ochre);
+      color: #fff;
+      border-radius: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-bottom: none !important;
+    }
+
+    .nav-links .mobile-cta:hover {
+      background: var(--babl-clay);
+    }
     .nav { padding: 14px 20px; }
     .timeline::before { left: 18px; }
     .step { padding-left: 60px; }
@@ -658,11 +843,17 @@
 <div class="shell">
 
   <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
   <nav class="nav">
     <a href="./index.html" class="logo">
       <span class="logo-name">Nadir Chajia</span>
       <span class="logo-label">coaching</span>
     </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     <ul class="nav-links">
       <li><a href="./index.html#methode">De Methode</a></li>
       <li><a href="./index.html#traject">Het Traject</a></li>
@@ -674,6 +865,7 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>
   </nav>
+  </div>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
@@ -819,7 +1011,133 @@
 </div>
 
 <script>
-  // Scroll reveal animatie
+
+
+  // Sticky nav scroll state
+  (function() {
+    const wrap = document.querySelector('.nav-wrap');
+    if (!wrap) return;
+    function check() {
+      wrap.classList.toggle('scrolled', window.scrollY > 8);
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  // Wandelende voetstapjes — scroll-driven walking animation
+  (function() {
+    if (window.innerWidth <= 1100) return;
+
+    const FOOTPRINT_LEFT = `<svg viewBox="0 0 26 38" xmlns="http://www.w3.org/2000/svg"><path d="M13 2c3 0 5.4 3.6 5.4 8.4 0 3.7-1.5 7-3.7 8.5-.6.5-1 1.3-1 2.1 0 1.7.6 3.9.6 5.7 0 4.2-2.7 7.2-6 7.2-2.6 0-4.4-1.9-4.4-4.6 0-2.1 1-3.8 1-5.9 0-1-.3-1.9-1-2.5C2 19.4 1 16.7 1 13.5 1 7 6.4 2 13 2z" fill="currentColor"/><circle cx="7" cy="3.5" r="1.5" fill="currentColor"/><circle cx="3.8" cy="6.7" r="1.3" fill="currentColor"/><circle cx="2.2" cy="10.4" r="1.1" fill="currentColor"/><circle cx="2.2" cy="13.6" r="1" fill="currentColor"/></svg>`;
+
+    const FOOTPRINT_RIGHT = `<svg viewBox="0 0 26 38" xmlns="http://www.w3.org/2000/svg"><path d="M13 2c-3 0-5.4 3.6-5.4 8.4 0 3.7 1.5 7 3.7 8.5.6.5 1 1.3 1 2.1 0 1.7-.6 3.9-.6 5.7 0 4.2 2.7 7.2 6 7.2 2.6 0 4.4-1.9 4.4-4.6 0-2.1-1-3.8-1-5.9 0-1 .3-1.9 1-2.5 1.9-1.5 2.9-4.2 2.9-7.4 0-6.5-5.4-11.5-12-11.5z" fill="currentColor"/><circle cx="19" cy="3.5" r="1.5" fill="currentColor"/><circle cx="22.2" cy="6.7" r="1.3" fill="currentColor"/><circle cx="23.8" cy="10.4" r="1.1" fill="currentColor"/><circle cx="23.8" cy="13.6" r="1" fill="currentColor"/></svg>`;
+
+    const STEP_SPACING = 110;       // vertical px between steps
+    const START_OFFSET = 700;       // start trail well below the hero
+    const END_PADDING  = 400;       // stop the trail before the very end
+
+    const shell = document.querySelector('.shell');
+    if (!shell) return;
+
+    const trail = document.createElement('div');
+    trail.className = 'footsteps-trail';
+    shell.appendChild(trail);
+
+    // Build steps until we run out of page
+    const steps = [];
+    function buildSteps() {
+      trail.innerHTML = '';
+      steps.length = 0;
+      const docHeight = document.documentElement.scrollHeight;
+      const last = docHeight - END_PADDING;
+      let i = 0;
+      for (let y = START_OFFSET; y < last; y += STEP_SPACING) {
+        const side = (i % 2 === 0) ? 'left' : 'right';
+        const el = document.createElement('div');
+        el.className = 'footstep ' + side;
+        el.style.top = y + 'px';
+        el.innerHTML = (side === 'left') ? FOOTPRINT_LEFT : FOOTPRINT_RIGHT;
+        trail.appendChild(el);
+        steps.push({ el: el, y: y, placed: false });
+        i++;
+      }
+    }
+
+    buildSteps();
+
+    function update() {
+      const triggerY = window.scrollY + window.innerHeight * 0.62;
+      for (const step of steps) {
+        if (!step.placed && triggerY > step.y) {
+          step.placed = true;
+          step.el.classList.add('placed');
+        }
+      }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Rebuild on resize (page reflows can change positions)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth <= 1100) {
+          trail.innerHTML = '';
+          steps.length = 0;
+          return;
+        }
+        // Preserve placed indices so we don't re-animate on resize
+        const placedCount = steps.filter(s => s.placed).length;
+        buildSteps();
+        for (let i = 0; i < Math.min(placedCount, steps.length); i++) {
+          steps[i].placed = true;
+          steps[i].el.classList.add('placed');
+        }
+        update();
+      }, 200);
+    });
+
+    update();
+  })();
+
+  // Mobile hamburger drawer
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      links.classList.toggle('open', open);
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // Close on any link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close when resizing back to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+
+    // Scroll reveal animatie
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
