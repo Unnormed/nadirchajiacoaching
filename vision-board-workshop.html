@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Board Workshop · Nadir Chajia</title>
+<meta name="description" content="Een namiddag manifesteren en je vision board maken. Vier uur, €100, alles voorzien. Begeleid door Nadir Chajia, Accredited Life Coach.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --babl-green: #1f3c2c;
+    --babl-green-deep: #15281f;
+    --babl-moss: #8b9d7a;
+    --babl-cream: #f4ede1;
+    --babl-sand: #e8ddc8;
+    --babl-ochre: #c68954;
+    --babl-clay: #a86a3d;
+    --babl-lavender: #dcd6e0;
+    --babl-ink: #1a1a1a;
+    --babl-ink-60: rgba(26, 26, 26, 0.6);
+    --babl-ink-40: rgba(26, 26, 26, 0.4);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --container-max: 1280px;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400; font-size: 16px; line-height: 1.6;
+    color: var(--babl-ink); background: var(--babl-cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+
+  .shell {
+    max-width: calc(var(--container-max) + 64px);
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-wrap { position: sticky; top: 12px; z-index: 50; }
+  .nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-radius: var(--radius);
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, background 0.3s, padding 0.3s;
+  }
+  .nav-wrap.scrolled .nav {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 28px rgba(31, 60, 44, 0.08);
+    padding: 14px 32px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--babl-green); }
+  .logo-mark { height: 36px; width: auto; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .logo:hover .logo-mark { transform: rotate(-4deg) scale(1.04); }
+  .logo-text { display: flex; align-items: baseline; gap: 10px; }
+  .logo-name { font-family: var(--font-display); font-size: 22px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; white-space: nowrap; }
+  .logo-label { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 16px; color: var(--babl-ochre); letter-spacing: 0.3px; line-height: 1; }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--babl-ink); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--babl-green); }
+  .nav-links a.active { color: var(--babl-green); font-weight: 500; }
+  .nav-links .mobile-cta { display: none; }
+
+  .nav-cta {
+    padding: 10px 18px; background: var(--babl-ochre);
+    color: #fff; border: none; border-radius: 24px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover { background: var(--babl-clay); transform: translateY(-1px); }
+
+  /* ---------- BREADCRUMB ---------- */
+  .crumb {
+    margin: 24px 8px 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--babl-ink-60);
+  }
+  .crumb a {
+    color: var(--babl-ink-60);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .crumb a:hover { color: var(--babl-green); }
+  .crumb span { margin: 0 10px; opacity: 0.5; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 80px 64px 72px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
+    align-items: center;
+    animation: fadeInUp 0.9s ease-out both;
+  }
+
+  .hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero-kicker::before {
+    content: ''; width: 24px; height: 1px; background: var(--babl-ochre);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400; font-size: 68px; line-height: 1.02;
+    letter-spacing: -1px; color: var(--babl-ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--babl-green); }
+
+  .hero-body {
+    font-size: 17px; color: var(--babl-ink-60); line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Hero collage — bigger version of the listing collage */
+  .hero-visual {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--babl-sand) 0%, var(--babl-cream) 100%);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-collage {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 8px; padding: 32px;
+  }
+  .hero-collage .tile {
+    border-radius: 3px;
+    box-shadow: 0 6px 18px rgba(31, 60, 44, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--babl-green);
+  }
+  .hero-collage .h1 { grid-column: 1 / span 4; grid-row: 1 / span 4; background: var(--babl-green); }
+  .hero-collage .h2 { grid-column: 5 / span 4; grid-row: 1 / span 3; background: var(--babl-ochre); }
+  .hero-collage .h3 { grid-column: 5 / span 2; grid-row: 4 / span 3; background: var(--babl-lavender); }
+  .hero-collage .h4 { grid-column: 7 / span 2; grid-row: 4 / span 5; background: var(--babl-clay); }
+  .hero-collage .h5 { grid-column: 1 / span 2; grid-row: 5 / span 4; background: var(--babl-moss); }
+  .hero-collage .h6 {
+    grid-column: 3 / span 4; grid-row: 7 / span 2;
+    background: #fff;
+    border: 1px solid rgba(31, 60, 44, 0.05);
+    font-size: 24px;
+  }
+  .hero-collage .h6::after { content: 'rust · richting · ruimte'; }
+
+  /* ---------- META BAR ---------- */
+  .meta-bar {
+    background: var(--babl-green);
+    color: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 28px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    align-items: center;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-item .label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .meta-item .value {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .meta-item .value em { font-style: italic; color: var(--babl-ochre); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 80px 72px;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--babl-ochre);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+  }
+  .kicker::before {
+    content: ''; width: 24px; height: 1px; background: var(--babl-ochre);
+  }
+
+  section h2 {
+    font-family: var(--font-display);
+    font-weight: 400; font-size: 44px;
+    line-height: 1.08; letter-spacing: -0.5px;
+    color: var(--babl-ink);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  section h2 em { font-style: italic; color: var(--babl-green); }
+
+  section .lede {
+    font-size: 17px; color: var(--babl-ink-60);
+    line-height: 1.7; max-width: 640px;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- TWO MOVEMENTS ---------- */
+  .movements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .movement {
+    padding: 36px;
+    background: var(--babl-cream);
+    border-radius: var(--radius);
+    border: 1px solid rgba(31, 60, 44, 0.06);
+  }
+  .movement .num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--babl-ochre);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .movement h3 {
+    font-family: var(--font-display);
+    font-weight: 500; font-size: 26px;
+    color: var(--babl-green);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .movement p {
+    font-size: 15.5px;
+    color: var(--babl-ink-60);
+    line-height: 1.7;
+  }
+
+  /* ---------- QUOTE BLOCK ---------- */
+  .quote-block {
+    background: var(--babl-green);
+    color: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 72px;
+    text-align: center;
+  }
+  .quote-block .mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--babl-ochre);
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+  .quote-block blockquote {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    max-width: 760px;
+    margin: 0 auto 28px;
+  }
+  .quote-block blockquote em { font-style: italic; color: var(--babl-ochre); }
+  .quote-block .attr {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .quote-block .attr-name { color: #fff; }
+
+  .quote-after {
+    max-width: 640px;
+    margin: 36px auto 0;
+    font-size: 16px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.7;
+  }
+
+  /* ---------- PRACTICAL GRID ---------- */
+  .practical-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .practical-card {
+    background: var(--babl-cream);
+    border-radius: var(--radius);
+    padding: 36px;
+    border: 1px solid rgba(31, 60, 44, 0.06);
+  }
+  .practical-card h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--babl-green);
+    margin-bottom: 18px;
+  }
+  .practical-card ul { list-style: none; }
+  .practical-card li {
+    font-size: 15px;
+    color: var(--babl-ink);
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(31, 60, 44, 0.12);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .practical-card li:last-child { border-bottom: none; }
+  .practical-card li::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--babl-ochre);
+    flex-shrink: 0;
+  }
+  .practical-card.empty li::before { background: var(--babl-moss); opacity: 0.5; }
+  .practical-card .note {
+    margin-top: 18px;
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--babl-ink-60);
+  }
+
+  /* ---------- TAKEAWAY ---------- */
+  .takeaway {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .takeaway-item {
+    padding: 28px 24px;
+    border: 1px solid rgba(31, 60, 44, 0.12);
+    border-radius: var(--radius);
+    text-align: left;
+  }
+  .takeaway-item .ico {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--babl-sand);
+    color: var(--babl-clay);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+  }
+  .takeaway-item h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--babl-green);
+    margin-bottom: 6px;
+  }
+  .takeaway-item p {
+    font-size: 14.5px;
+    color: var(--babl-ink-60);
+    line-height: 1.65;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .cta-final {
+    background: var(--babl-green);
+    color: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 72px;
+    text-align: center;
+  }
+  .cta-final h2 {
+    font-family: var(--font-display);
+    font-weight: 400; font-size: 52px; line-height: 1.05;
+    color: #fff;
+    margin-bottom: 18px;
+    max-width: none;
+  }
+  .cta-final h2 em { font-style: italic; color: var(--babl-ochre); }
+  .cta-final p {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 540px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .cta-final-actions {
+    display: flex; gap: 12px;
+    justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px; border-radius: 28px;
+    font-family: var(--font-body);
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .btn-primary { background: var(--babl-ochre); color: #fff; }
+  .btn-primary:hover { background: var(--babl-clay); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--babl-ink);
+    border: 1px solid rgba(31, 60, 44, 0.2);
+  }
+  .btn-ghost:hover { border-color: var(--babl-green); color: var(--babl-green); }
+  .cta-final .btn-ghost {
+    color: rgba(255,255,255,0.85);
+    border-color: rgba(255,255,255,0.3);
+  }
+  .cta-final .btn-ghost:hover {
+    border-color: #fff; color: #fff;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--babl-ink-60);
+  }
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic; font-size: 18px;
+    color: var(--babl-green); margin-bottom: 8px;
+  }
+  .footer-meta { font-size: 12px; letter-spacing: 0.5px; }
+  .footer-meta a { color: var(--babl-ink-60); text-decoration: none; transition: color 0.2s; }
+  .footer-meta a:hover { color: var(--babl-green); }
+
+  /* ---------- MOBILE NAV TOGGLE ---------- */
+  .nav-toggle {
+    display: none; background: transparent; border: none;
+    cursor: pointer; padding: 10px; width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px; margin-left: auto;
+  }
+  .nav-toggle .bar {
+    display: block; width: 22px; height: 1.6px;
+    background: var(--babl-ink); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.2s;
+    transform-origin: center;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+
+  /* ---------- ANIMATIE ---------- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 56px 32px;
+    }
+    .hero h1 { font-size: 50px; }
+    .hero-visual { aspect-ratio: 4 / 3; }
+
+    .meta-bar {
+      grid-template-columns: 1fr 1fr;
+      padding: 24px 28px;
+      gap: 20px 24px;
+    }
+    .meta-item .value { font-size: 19px; }
+
+    section.block { padding: 56px 32px; }
+    section h2 { font-size: 34px; }
+
+    .movements { grid-template-columns: 1fr; gap: 16px; }
+    .practical-grid { grid-template-columns: 1fr; gap: 16px; }
+    .takeaway { grid-template-columns: 1fr; }
+
+    .quote-block { padding: 72px 32px; }
+    .quote-block blockquote { font-size: 34px; }
+    .quote-block .mark { font-size: 60px; }
+
+    .cta-final { padding: 72px 32px; }
+    .cta-final h2 { font-size: 38px; }
+
+    .nav-toggle { display: flex; order: 3; }
+    .nav { flex-wrap: wrap; position: relative; gap: 8px; }
+    .nav .nav-cta { order: 2; padding: 8px 14px; font-size: 12px; gap: 6px; }
+    .nav .nav-cta svg { width: 10px; height: 10px; }
+    .nav .logo { order: 1; flex-direction: row; align-items: center; gap: 10px; min-width: 0; }
+    .nav .logo-mark { height: 32px; }
+    .nav .logo-text { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .nav .logo-name { font-size: 17px; }
+    .nav .logo-label { font-size: 12px; }
+
+    .nav-links {
+      display: none; flex-direction: column; align-items: stretch;
+      width: 100%; gap: 0; margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid rgba(31, 60, 44, 0.1); flex-basis: 100%;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 14px 4px; font-size: 16px; border-bottom: 1px solid rgba(31, 60, 44, 0.06); }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links .mobile-cta {
+      display: inline-flex; margin-top: 14px; padding: 14px 22px;
+      background: var(--babl-ochre); color: #fff; border-radius: 28px;
+      font-size: 14px; font-weight: 500;
+      align-items: center; justify-content: center;
+      gap: 8px; border-bottom: none !important;
+    }
+    .nav-links .mobile-cta:hover { background: var(--babl-clay); }
+    .nav { padding: 14px 20px; }
+  }
+
+  @media (max-width: 520px) {
+    .nav .nav-cta { display: none; }
+    .shell { padding: 12px; }
+    .hero { padding: 44px 22px; }
+    .hero h1 { font-size: 40px; }
+    section h2 { font-size: 30px; }
+    .quote-block blockquote { font-size: 28px; }
+    .cta-final h2 { font-size: 32px; }
+    .meta-bar { grid-template-columns: 1fr; gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
+  <nav class="nav">
+    <a href="./" class="logo">
+      <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342.94 229.63" aria-hidden="true">
+        <path d="M.03,19.42c.09,45.16-.19,191.59.12,200.77.2,1.97.98,1.6,2.9,1.64,12.83.05,42.45.08,58.2.06,1.93.36.97-8.6,1.19-10.07.07-10.96-.05-94.52,0-128.56-1.12-7.74,14.49-46.85,40.65-56.65,18.15-6.79,36.35.94,39.01,20.39,1.24,15.57.62,31.31,1.16,46.94.42,14.59.09,29.24,1,43.8,5.93,45.75,43.85,85.03,92.35,90.26,37.51,6.99,79.5-8.59,97.93-47.11,3.05-6.4,5.41-13.49,6.84-21,.3-1.27.41-2.81-.07-3.88-.89-2-4.76-2.02-6.67-.61-1.17.79-1.56,2.14-1.93,3.47-2.38,9.77-7,19.54-13.47,28.2-14.44,19.84-39.33,33.21-64.43,32.34-11.59.27-32.71-6.33-37.54-20.83-13.03-38.1-7.93-82.36-9.56-131.04-1.59-47.6-38.64-71.42-79.41-62.87-28.35,5.09-50.54,22.49-64.3,44.94-.68-12.45-.01-39.66-.24-47.98.39-3.07-2.92-1.07-4.65-.33C43.79,9.76,21.4,11.1.03,11.21" fill="#1F3C2C"/>
+        <path d="M249.46,4.68c9.74-1.64,25.75-2.77,43.54,3.38,5.13,1.77,29.8,10.86,41.08,32.18,5.03,9.51,4.77,16.49,4.64,18.51-.17,2.59-1.03,10.37-5.63,15.51-9.61,10.75-31.99,6.29-40.35,2.12-24.53-12.25-41.97-58.54-43.28-71.69Z" fill="#C68954"/>
+        <path d="M338.78,92.5c-17.99-37.09-51.22-65.11-86.25-85.73,36.16,19.76,70.3,46.94,89.83,83.94,0,0-3.58,1.78-3.58,1.78h0Z" fill="#C68954"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-name">Nadir Chajia</span>
+        <span class="logo-label">coaching</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="./#methode">De Methode</a></li>
+      <li><a href="./#traject">Het Traject</a></li>
+      <li><a href="./wandelcoaching.html">Wandelcoaching</a></li>
+      <li><a href="./workshops.html" class="active">Workshops</a></li>
+      <li><a href="./#over">Over Nadir</a></li>
+      <li><a class="mobile-cta" href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener">Gratis kennismaking
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a></li>
+    </ul>
+    <a href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener" class="nav-cta">
+      Gratis kennismaking
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  </div>
+
+  <!-- ============ BREADCRUMB ============ -->
+  <p class="crumb">
+    <a href="./workshops.html">← Workshops</a>
+    <span>/</span>
+    Vision Board
+  </p>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div>
+      <span class="hero-kicker">Vision Board Workshop</span>
+      <h1>Maak een <em>tastbaar</em> beeld van waar je naartoe wil.</h1>
+      <p class="hero-body">
+        Een vision board is geen knutselwerk. Het is een dagelijkse herinnering aan de richting die je voor jezelf hebt gekozen. In één namiddag leer je hoe je er één maakt, en — minstens even belangrijk — hoe je hem vanaf morgen ook werkelijk gebruikt.
+      </p>
+      <div class="hero-actions">
+        <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="btn btn-primary">
+          Inschrijven
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h7M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#praktisch" class="btn btn-ghost">Praktische info</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-collage" aria-hidden="true">
+        <div class="tile h1"></div>
+        <div class="tile h2"></div>
+        <div class="tile h3"></div>
+        <div class="tile h4"></div>
+        <div class="tile h5"></div>
+        <div class="tile h6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ META BAR ============ -->
+  <div class="meta-bar">
+    <div class="meta-item">
+      <span class="label">Duur</span>
+      <span class="value">4 <em>uur</em></span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Investering</span>
+      <span class="value">€<em>100</em></span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Datum</span>
+      <span class="value">Coming <em>soon</em></span>
+    </div>
+    <div class="meta-item">
+      <span class="label">Wat meebrengen</span>
+      <span class="value"><em>Niets</em></span>
+    </div>
+  </div>
+
+  <!-- ============ TWO MOVEMENTS ============ -->
+  <section class="block reveal">
+    <span class="kicker">Wat we doen</span>
+    <h2>Twee bewegingen, één <em>namiddag</em>.</h2>
+    <p class="lede">
+      De workshop bestaat uit twee delen. Eerst staan we stil bij wat manifesteren eigenlijk is, en hoe een vision board daar precies in past. Daarna gaan we aan tafel: bladeren, woorden, schaar, lijm. Wat eruit komt is geen verzameling mooie plaatjes, maar een precies beeld van de toekomst die je wil leven.
+    </p>
+
+    <div class="movements">
+      <div class="movement">
+        <div class="num">01</div>
+        <h3>Manifesteren — wat het is en wat het niet is.</h3>
+        <p>
+          Manifesteren is geen wensdenken. Het is je richting expliciet maken zodat je hersenen, je keuzes en je dagindeling die richting kunnen volgen. We leggen uit hoe dat mechanisme werkt, en waarom een visueel anker zoveel sterker is dan een lijstje voornemens.
+        </p>
+      </div>
+      <div class="movement">
+        <div class="num">02</div>
+        <h3>Je vision board maken.</h3>
+        <p>
+          Hier wordt het concreet. Je krijgt een board, een stapel beelden en woorden, en de tijd om te kiezen wat past. Geen template, geen Pinterest-esthetiek — wel een board dat van jou is en waar je elke ochtend naar wil kijken.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section class="quote-block reveal">
+    <div class="mark">&ldquo;</div>
+    <blockquote>
+      Vijf minuten, elke ochtend. <em>Meer hoeft niet.</em>
+    </blockquote>
+    <p class="attr">
+      <span class="attr-name">Nadir Chajia</span> · accredited life coach
+    </p>
+    <p class="quote-after">
+      Een vision board werkt niet omdat je hem maakt. Hij werkt omdat je hem ziet. Vijf minuten elke ochtend, voor de dag jou meeneemt in een andere richting, is alles wat je nodig hebt om je koers vast te houden.
+    </p>
+  </section>
+
+  <!-- ============ PRACTICAL ============ -->
+  <section class="block reveal" id="praktisch">
+    <span class="kicker">Praktisch</span>
+    <h2>Je hoeft <em>niets</em> mee te brengen.</h2>
+    <p class="lede">
+      Alles wat je nodig hebt staat klaar. Je komt binnen, gaat zitten, en vertrekt vier uur later met een afgewerkt board onder de arm.
+    </p>
+
+    <div class="practical-grid">
+      <div class="practical-card">
+        <h3>Wat we voorzien</h3>
+        <ul>
+          <li>Een vision board op formaat</li>
+          <li>Een ruime selectie aan beelden &amp; woorden</li>
+          <li>Schaar, lijm, stiften, tape</li>
+          <li>Koffie, thee &amp; iets om te knabbelen</li>
+          <li>Begeleiding door Nadir van begin tot eind</li>
+        </ul>
+      </div>
+      <div class="practical-card empty">
+        <h3>Wat je meebrengt</h3>
+        <ul>
+          <li>Jezelf</li>
+          <li>Een namiddag tijd</li>
+          <li>Eventueel: één of twee persoonlijke foto's of beelden die niet in de stapel zouden zitten</li>
+        </ul>
+        <p class="note">Voor de rest: laat alles thuis. Ook je verwachtingen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAKEAWAY ============ -->
+  <section class="block reveal">
+    <span class="kicker">Wat je meeneemt</span>
+    <h2>Drie dingen waarmee je naar huis <em>vertrekt</em>.</h2>
+
+    <div class="takeaway">
+      <div class="takeaway-item">
+        <div class="ico">1</div>
+        <h4>Een afgewerkt vision board</h4>
+        <p>Klaar om op te hangen. Op een plek waar je hem elke ochtend tegenkomt — niet weggestopt achter een deur.</p>
+      </div>
+      <div class="takeaway-item">
+        <div class="ico">2</div>
+        <h4>Een ochtendritueel</h4>
+        <p>Vijf minuten per dag. Een eenvoudig systeem om je richting elke ochtend te bevestigen, voor de drukte begint.</p>
+      </div>
+      <div class="takeaway-item">
+        <div class="ico">3</div>
+        <h4>Een helder beeld van je richting</h4>
+        <p>Niet abstract, niet vaag. Een concreet beeld waar je je beslissingen de komende maanden tegen kan leggen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-final">
+    <h2>Klaar om je <em>richting</em> te kiezen?</h2>
+    <p>
+      De eerste workshop staat in de planning. Schrijf je in via het formulier — we laten je weten zodra de datum vastligt en je plek bevestigd is.
+    </p>
+    <div class="cta-final-actions">
+      <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="btn btn-primary">
+        Inschrijven
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h7M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+      <a href="./workshops.html" class="btn btn-ghost">Naar alle workshops</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer-tagline">Start klein. Groei groot.</p>
+    <p class="footer-meta">
+      Nadir Chajia · Accredited Life Coach · © BABL Methode  ·
+      <a href="./">Terug naar de hoofdpagina</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Sticky nav scroll state
+  (function() {
+    const wrap = document.querySelector('.nav-wrap');
+    if (!wrap) return;
+    function check() { wrap.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  // Mobile hamburger drawer
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      links.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
