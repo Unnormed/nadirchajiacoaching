@@ -90,10 +90,27 @@
 
   .logo {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
     color: var(--babl-green);
+  }
+
+  .logo-mark {
+    height: 36px;
+    width: auto;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .logo:hover .logo-mark {
+    transform: rotate(-4deg) scale(1.04);
+  }
+
+  .logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
   }
 
   .logo-name {
@@ -995,18 +1012,28 @@
 
     .nav .logo {
       order: 1;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
       min-width: 0;
     }
 
+    .nav .logo-mark {
+      height: 32px;
+    }
+
+    .nav .logo-text {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
     .nav .logo-name {
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .nav .logo-label {
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .nav-links {
@@ -1080,8 +1107,15 @@
   <div class="nav-wrap">
   <nav class="nav">
     <a href="#" class="logo">
-      <span class="logo-name">Nadir Chajia</span>
-      <span class="logo-label">coaching</span>
+      <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342.94 229.63" aria-hidden="true">
+        <path d="M.03,19.42c.09,45.16-.19,191.59.12,200.77.2,1.97.98,1.6,2.9,1.64,12.83.05,42.45.08,58.2.06,1.93.36.97-8.6,1.19-10.07.07-10.96-.05-94.52,0-128.56-1.12-7.74,14.49-46.85,40.65-56.65,18.15-6.79,36.35.94,39.01,20.39,1.24,15.57.62,31.31,1.16,46.94.42,14.59.09,29.24,1,43.8,5.93,45.75,43.85,85.03,92.35,90.26,37.51,6.99,79.5-8.59,97.93-47.11,3.05-6.4,5.41-13.49,6.84-21,.3-1.27.41-2.81-.07-3.88-.89-2-4.76-2.02-6.67-.61-1.17.79-1.56,2.14-1.93,3.47-2.38,9.77-7,19.54-13.47,28.2-14.44,19.84-39.33,33.21-64.43,32.34-11.59.27-32.71-6.33-37.54-20.83-13.03-38.1-7.93-82.36-9.56-131.04-1.59-47.6-38.64-71.42-79.41-62.87-28.35,5.09-50.54,22.49-64.3,44.94-.68-12.45-.01-39.66-.24-47.98.39-3.07-2.92-1.07-4.65-.33C43.79,9.76,21.4,11.1.03,11.21" fill="#1F3C2C"/>
+        <path d="M249.46,4.68c9.74-1.64,25.75-2.77,43.54,3.38,5.13,1.77,29.8,10.86,41.08,32.18,5.03,9.51,4.77,16.49,4.64,18.51-.17,2.59-1.03,10.37-5.63,15.51-9.61,10.75-31.99,6.29-40.35,2.12-24.53-12.25-41.97-58.54-43.28-71.69Z" fill="#C68954"/>
+        <path d="M338.78,92.5c-17.99-37.09-51.22-65.11-86.25-85.73,36.16,19.76,70.3,46.94,89.83,83.94,0,0-3.58,1.78-3.58,1.78h0Z" fill="#C68954"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-name">Nadir Chajia</span>
+        <span class="logo-label">coaching</span>
+      </span>
     </a>
     <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
       <span class="bar"></span>
