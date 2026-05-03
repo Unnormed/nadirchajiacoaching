@@ -462,6 +462,107 @@
     .workshop-actions { width: 100%; }
     .workshop-actions .btn { flex: 1; justify-content: center; }
   }
+
+  /* ---------- COOKIE BANNER ---------- */
+  .cookie-banner {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 100;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 18px 48px rgba(31, 60, 44, 0.18);
+    border: 1px solid rgba(31, 60, 44, 0.06);
+    max-width: 760px;
+    margin: 0 auto;
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s;
+    pointer-events: none;
+  }
+  .cookie-banner.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .cookie-banner-inner {
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .cookie-banner h2 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--babl-green);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .cookie-banner p {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--babl-ink-60);
+    line-height: 1.55;
+  }
+  .cookie-banner p a {
+    color: var(--babl-green);
+    text-decoration: underline;
+    text-decoration-color: rgba(31, 60, 44, 0.3);
+    text-underline-offset: 2px;
+  }
+  .cookie-banner p a:hover { text-decoration-color: var(--babl-green); }
+
+  .cookie-banner-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .cookie-btn {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .cookie-btn-primary {
+    background: var(--babl-ochre);
+    color: #fff;
+  }
+  .cookie-btn-primary:hover {
+    background: var(--babl-clay);
+    transform: translateY(-1px);
+  }
+  .cookie-btn-ghost {
+    background: transparent;
+    color: var(--babl-ink);
+    border: 1px solid rgba(31, 60, 44, 0.2);
+  }
+  .cookie-btn-ghost:hover {
+    border-color: var(--babl-green);
+    color: var(--babl-green);
+  }
+
+  @media (max-width: 720px) {
+    .cookie-banner-inner {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 20px 22px;
+    }
+    .cookie-banner h2 { font-size: 17px; }
+    .cookie-banner-actions { width: 100%; }
+    .cookie-btn { flex: 1; padding: 12px 14px; }
+  }
+  @media (max-width: 480px) {
+    .cookie-banner { bottom: 12px; left: 12px; right: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -615,7 +716,42 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Cookie banner
+  (function() {
+    const STORAGE_KEY = 'babl-cookie-consent';
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    let stored = null;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    if (!stored) {
+      setTimeout(() => banner.classList.add('visible'), 800);
+    }
+    banner.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-cookie-action]');
+      if (!btn) return;
+      try { localStorage.setItem(STORAGE_KEY, btn.dataset.cookieAction); } catch(err) {}
+      banner.classList.remove('visible');
+    });
+  })();
 </script>
+
+
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc" aria-live="polite">
+  <div class="cookie-banner-inner">
+    <div>
+      <h2 id="cookie-title">Een korte mededeling.</h2>
+      <p id="cookie-desc">
+        Deze site gebruikt enkel strikt noodzakelijke cookies om correct te werken. Geen tracking, geen advertenties. Lees meer in ons <a href="./cookies.html">cookiebeleid</a>.
+      </p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-ghost" data-cookie-action="reject">Alleen noodzakelijke</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-cookie-action="accept">Akkoord</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
