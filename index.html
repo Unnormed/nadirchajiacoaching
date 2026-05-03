@@ -920,7 +920,21 @@
   .footer-meta {
     font-size: 12px;
     letter-spacing: 0.5px;
+    margin-bottom: 6px;
   }
+
+  .footer-meta a, .footer-legal a {
+    color: var(--babl-ink-60);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-meta a:hover, .footer-legal a:hover { color: var(--babl-green); }
+
+  .footer-legal {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .footer-legal a { margin: 0 8px; }
 
 
   /* ---------- MOBILE NAV TOGGLE ---------- */
@@ -1387,6 +1401,11 @@
   <footer class="footer">
     <p class="footer-tagline">Start klein. Groei groot.</p>
     <p class="footer-meta">Nadir Chajia · Accredited Life Coach · © BABL Methode</p>
+    <p class="footer-legal">
+      <a href="./privacy.html">Privacy</a> ·
+      <a href="./cookies.html">Cookies</a> ·
+      <a href="./algemene-voorwaarden.html">Algemene voorwaarden</a>
+    </p>
   </footer>
 
 </div>
