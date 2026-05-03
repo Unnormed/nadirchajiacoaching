@@ -212,6 +212,58 @@
   }
   .meta-item .value em { font-style: italic; color: var(--babl-ochre); }
 
+  /* ---------- MANIFESTO BAND ---------- */
+  .manifesto {
+    margin-top: 16px;
+    padding: 88px 32px;
+    text-align: center;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(198, 137, 84, 0.06), transparent 70%),
+      var(--babl-cream);
+    border: 1px solid rgba(31, 60, 44, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before, .manifesto::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background: var(--babl-ochre);
+    opacity: 0.5;
+  }
+  .manifesto::before { top: 36px; }
+  .manifesto::after  { bottom: 36px; }
+
+  .manifesto .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 22px;
+    display: inline-block;
+  }
+
+  .manifesto p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+    color: var(--babl-green);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .manifesto p em {
+    font-style: italic;
+    color: var(--babl-clay);
+  }
+
   /* ---------- SECTION SHELL ---------- */
   section.block {
     background: #fff;
@@ -532,6 +584,9 @@
     .quote-block blockquote { font-size: 34px; }
     .quote-block .mark { font-size: 60px; }
 
+    .manifesto { padding: 64px 28px; }
+    .manifesto p { font-size: 34px; }
+
     .cta-final { padding: 72px 32px; }
     .cta-final h2 { font-size: 38px; }
 
@@ -572,6 +627,7 @@
     .hero h1 { font-size: 40px; }
     section h2 { font-size: 30px; }
     .quote-block blockquote { font-size: 28px; }
+    .manifesto p { font-size: 26px; }
     .cta-final h2 { font-size: 32px; }
     .meta-bar { grid-template-columns: 1fr; gap: 18px; }
   }
@@ -671,6 +727,12 @@
       <span class="value"><em>Niets</em></span>
     </div>
   </div>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="manifesto reveal">
+    <span class="eyebrow">Het uitgangspunt</span>
+    <p>Jouw <em>gedachten</em><br>creëren jouw realiteit.</p>
+  </section>
 
   <!-- ============ TWO MOVEMENTS ============ -->
   <section class="block reveal">
