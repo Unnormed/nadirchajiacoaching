@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /workshops
+Disallow: /workshops.html
+Disallow: /vision-board-workshop
+Disallow: /vision-board-workshop.html
