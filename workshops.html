@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops · Nadir Chajia</title>
+<meta name="description" content="Eénmalige workshops rond één concrete uitkomst. Korter dan een traject, even doordacht. Begeleid door Nadir Chajia, Accredited Life Coach.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --babl-green: #1f3c2c;
+    --babl-green-deep: #15281f;
+    --babl-moss: #8b9d7a;
+    --babl-cream: #f4ede1;
+    --babl-sand: #e8ddc8;
+    --babl-ochre: #c68954;
+    --babl-clay: #a86a3d;
+    --babl-lavender: #dcd6e0;
+    --babl-ink: #1a1a1a;
+    --babl-ink-60: rgba(26, 26, 26, 0.6);
+    --babl-ink-40: rgba(26, 26, 26, 0.4);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --container-max: 1280px;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--babl-ink);
+    background: var(--babl-cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .shell {
+    max-width: calc(var(--container-max) + 64px);
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-wrap { position: sticky; top: 12px; z-index: 50; }
+
+  .nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-radius: var(--radius);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, background 0.3s, padding 0.3s;
+  }
+
+  .nav-wrap.scrolled .nav {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 28px rgba(31, 60, 44, 0.08);
+    padding: 14px 32px;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--babl-green);
+  }
+  .logo-mark {
+    height: 36px; width: auto; flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .logo:hover .logo-mark { transform: rotate(-4deg) scale(1.04); }
+  .logo-text { display: flex; align-items: baseline; gap: 10px; }
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 500; letter-spacing: 0.2px;
+    line-height: 1; white-space: nowrap;
+  }
+  .logo-label {
+    font-family: var(--font-display);
+    font-style: italic; font-weight: 400; font-size: 16px;
+    color: var(--babl-ochre); letter-spacing: 0.3px; line-height: 1;
+  }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--babl-ink); text-decoration: none;
+    font-size: 14px; font-weight: 400; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--babl-green); }
+  .nav-links a.active { color: var(--babl-green); font-weight: 500; }
+  .nav-links .mobile-cta { display: none; }
+
+  .nav-cta {
+    padding: 10px 18px;
+    background: var(--babl-ochre);
+    color: #fff; border: none; border-radius: 24px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover { background: var(--babl-clay); transform: translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 96px 64px 80px;
+    text-align: center;
+    animation: fadeInUp 0.9s ease-out both;
+  }
+
+  .hero-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 28px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero-kicker::before, .hero-kicker::after {
+    content: ''; width: 24px; height: 1px; background: var(--babl-ochre);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400; font-size: 76px; line-height: 1.02;
+    letter-spacing: -1px;
+    color: var(--babl-ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--babl-green); }
+
+  .hero-body {
+    font-size: 18px;
+    color: var(--babl-ink-60);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* ---------- WORKSHOPS LIST ---------- */
+  .workshops {
+    margin-top: 16px;
+    padding: 16px 0 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .workshop-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    min-height: 320px;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.4s ease;
+    box-shadow: 0 1px 2px rgba(31, 60, 44, 0.04);
+  }
+
+  .workshop-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 48px rgba(31, 60, 44, 0.10);
+  }
+
+  .workshop-content {
+    padding: 48px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .workshop-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .workshop-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--babl-sand);
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--babl-clay);
+  }
+
+  .workshop-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--babl-ochre);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+
+  .workshop-price {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--babl-green);
+    font-weight: 500;
+  }
+
+  .workshop-price small {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--babl-ink-60);
+    margin-left: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .workshop-title {
+    font-family: var(--font-display);
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    color: var(--babl-ink);
+    margin-bottom: 16px;
+  }
+
+  .workshop-title em { font-style: italic; color: var(--babl-green); }
+
+  .workshop-tagline {
+    font-size: 16px;
+    color: var(--babl-ink-60);
+    line-height: 1.6;
+    max-width: 460px;
+  }
+
+  .workshop-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 24px;
+    border-radius: 28px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--babl-ochre);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--babl-clay);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--babl-ink);
+    border: 1px solid rgba(31, 60, 44, 0.2);
+  }
+  .btn-ghost:hover {
+    border-color: var(--babl-green);
+    color: var(--babl-green);
+  }
+
+  /* ---------- WORKSHOP IMAGE (decorative collage) ---------- */
+  .workshop-image {
+    position: relative;
+    background: linear-gradient(135deg, var(--babl-sand) 0%, var(--babl-cream) 100%);
+    overflow: hidden;
+  }
+
+  /* Vision-board collage placeholder built with CSS */
+  .collage-vb {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+    padding: 28px;
+  }
+
+  .collage-vb .tile {
+    border-radius: 3px;
+    box-shadow: 0 4px 14px rgba(31, 60, 44, 0.08);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .workshop-card:hover .collage-vb .tile {
+    transform: rotate(var(--rot, 0deg)) translateY(-2px);
+  }
+
+  .collage-vb .t1 { grid-column: 1 / span 3; grid-row: 1 / span 3; background: var(--babl-green); --rot: -1.5deg; }
+  .collage-vb .t2 { grid-column: 4 / span 3; grid-row: 1 / span 2; background: var(--babl-ochre); --rot: 1deg; }
+  .collage-vb .t3 { grid-column: 4 / span 2; grid-row: 3 / span 2; background: var(--babl-lavender); --rot: -0.5deg; }
+  .collage-vb .t4 { grid-column: 6 / span 1; grid-row: 3 / span 3; background: var(--babl-clay); --rot: 1.5deg; }
+  .collage-vb .t5 { grid-column: 1 / span 2; grid-row: 4 / span 3; background: var(--babl-moss); --rot: 0.5deg; }
+  .collage-vb .t6 { grid-column: 3 / span 3; grid-row: 5 / span 2; background: #fff; border: 1px solid rgba(31, 60, 44, 0.06); --rot: -1deg; }
+
+  /* Word-snippet inside one of the tiles */
+  .collage-vb .t6::after {
+    content: 'rust';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--babl-green);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--babl-ink-60);
+  }
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic; font-size: 18px;
+    color: var(--babl-green); margin-bottom: 8px;
+  }
+  .footer-meta { font-size: 12px; letter-spacing: 0.5px; }
+  .footer-meta a {
+    color: var(--babl-ink-60); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-meta a:hover { color: var(--babl-green); }
+
+  /* ---------- MOBILE NAV TOGGLE ---------- */
+  .nav-toggle {
+    display: none; background: transparent; border: none;
+    cursor: pointer; padding: 10px; width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px; margin-left: auto;
+  }
+  .nav-toggle .bar {
+    display: block; width: 22px; height: 1.6px;
+    background: var(--babl-ink); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.2s;
+    transform-origin: center;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+
+  /* ---------- ANIMATIE ---------- */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero { padding: 72px 32px 56px; }
+    .hero h1 { font-size: 56px; }
+    .hero-body { font-size: 16px; }
+
+    .workshop-card { grid-template-columns: 1fr; min-height: 0; }
+    .workshop-image { min-height: 240px; order: -1; }
+    .workshop-content { padding: 36px 32px 40px; gap: 24px; }
+    .workshop-title { font-size: 36px; }
+
+    .nav-toggle { display: flex; order: 3; }
+    .nav { flex-wrap: wrap; position: relative; gap: 8px; }
+    .nav .nav-cta { order: 2; padding: 8px 14px; font-size: 12px; gap: 6px; }
+    .nav .nav-cta svg { width: 10px; height: 10px; }
+    .nav .logo { order: 1; flex-direction: row; align-items: center; gap: 10px; min-width: 0; }
+    .nav .logo-mark { height: 32px; }
+    .nav .logo-text { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .nav .logo-name { font-size: 17px; }
+    .nav .logo-label { font-size: 12px; }
+
+    .nav-links {
+      display: none; flex-direction: column; align-items: stretch;
+      width: 100%; gap: 0; margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid rgba(31, 60, 44, 0.1); flex-basis: 100%;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block; padding: 14px 4px; font-size: 16px;
+      border-bottom: 1px solid rgba(31, 60, 44, 0.06);
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links .mobile-cta {
+      display: inline-flex; margin-top: 14px; padding: 14px 22px;
+      background: var(--babl-ochre); color: #fff; border-radius: 28px;
+      font-size: 14px; font-weight: 500;
+      align-items: center; justify-content: center;
+      gap: 8px; border-bottom: none !important;
+    }
+    .nav-links .mobile-cta:hover { background: var(--babl-clay); }
+    .nav { padding: 14px 20px; }
+  }
+
+  @media (max-width: 520px) {
+    .nav .nav-cta { display: none; }
+    .shell { padding: 12px; }
+    .hero { padding: 56px 22px 48px; }
+    .hero h1 { font-size: 42px; }
+    .hero-body { font-size: 15px; }
+    .workshop-content { padding: 30px 24px 32px; }
+    .workshop-title { font-size: 30px; }
+    .workshop-image { min-height: 200px; }
+    .workshop-actions { width: 100%; }
+    .workshop-actions .btn { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
+  <nav class="nav">
+    <a href="./" class="logo">
+      <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342.94 229.63" aria-hidden="true">
+        <path d="M.03,19.42c.09,45.16-.19,191.59.12,200.77.2,1.97.98,1.6,2.9,1.64,12.83.05,42.45.08,58.2.06,1.93.36.97-8.6,1.19-10.07.07-10.96-.05-94.52,0-128.56-1.12-7.74,14.49-46.85,40.65-56.65,18.15-6.79,36.35.94,39.01,20.39,1.24,15.57.62,31.31,1.16,46.94.42,14.59.09,29.24,1,43.8,5.93,45.75,43.85,85.03,92.35,90.26,37.51,6.99,79.5-8.59,97.93-47.11,3.05-6.4,5.41-13.49,6.84-21,.3-1.27.41-2.81-.07-3.88-.89-2-4.76-2.02-6.67-.61-1.17.79-1.56,2.14-1.93,3.47-2.38,9.77-7,19.54-13.47,28.2-14.44,19.84-39.33,33.21-64.43,32.34-11.59.27-32.71-6.33-37.54-20.83-13.03-38.1-7.93-82.36-9.56-131.04-1.59-47.6-38.64-71.42-79.41-62.87-28.35,5.09-50.54,22.49-64.3,44.94-.68-12.45-.01-39.66-.24-47.98.39-3.07-2.92-1.07-4.65-.33C43.79,9.76,21.4,11.1.03,11.21" fill="#1F3C2C"/>
+        <path d="M249.46,4.68c9.74-1.64,25.75-2.77,43.54,3.38,5.13,1.77,29.8,10.86,41.08,32.18,5.03,9.51,4.77,16.49,4.64,18.51-.17,2.59-1.03,10.37-5.63,15.51-9.61,10.75-31.99,6.29-40.35,2.12-24.53-12.25-41.97-58.54-43.28-71.69Z" fill="#C68954"/>
+        <path d="M338.78,92.5c-17.99-37.09-51.22-65.11-86.25-85.73,36.16,19.76,70.3,46.94,89.83,83.94,0,0-3.58,1.78-3.58,1.78h0Z" fill="#C68954"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-name">Nadir Chajia</span>
+        <span class="logo-label">coaching</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="./#methode">De Methode</a></li>
+      <li><a href="./#traject">Het Traject</a></li>
+      <li><a href="./wandelcoaching.html">Wandelcoaching</a></li>
+      <li><a href="#" class="active">Workshops</a></li>
+      <li><a href="./#over">Over Nadir</a></li>
+      <li><a class="mobile-cta" href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener">Gratis kennismaking
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a></li>
+    </ul>
+    <a href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener" class="nav-cta">
+      Gratis kennismaking
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <span class="hero-kicker">Workshops</span>
+    <h1>Eén onderwerp.<br>Eén <em>namiddag</em>. Iets tastbaars mee naar huis.</h1>
+    <p class="hero-body">
+      Naast de BABL Methode loop ik geregeld eenmalige workshops rond één concreet thema. Geen traject, geen abonnement — gewoon een paar uur samen rond iets dat je vooruit helpt. Hieronder vind je wat er op de planning staat.
+    </p>
+  </section>
+
+  <!-- ============ WORKSHOPS LIST ============ -->
+  <section class="workshops">
+
+    <article class="workshop-card reveal">
+      <div class="workshop-content">
+        <div>
+          <div class="workshop-meta">
+            <span class="workshop-badge"><span class="dot"></span> Coming soon</span>
+            <span class="workshop-price">€100 <small>· 4 uur</small></span>
+          </div>
+        </div>
+        <div>
+          <h2 class="workshop-title">Vision Board <em>Workshop</em></h2>
+          <p class="workshop-tagline">
+            Maak een tastbaar beeld van de toekomst die je wilt — en leer hoe je hem ook in beweging zet.
+          </p>
+        </div>
+        <div class="workshop-actions">
+          <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="btn btn-primary">
+            Inschrijven
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </a>
+          <a href="./vision-board-workshop.html" class="btn btn-ghost">Meer informatie</a>
+        </div>
+      </div>
+      <a href="./vision-board-workshop.html" class="workshop-image" aria-label="Meer informatie over de Vision Board Workshop">
+        <div class="collage-vb" aria-hidden="true">
+          <div class="tile t1"></div>
+          <div class="tile t2"></div>
+          <div class="tile t3"></div>
+          <div class="tile t4"></div>
+          <div class="tile t5"></div>
+          <div class="tile t6"></div>
+        </div>
+      </a>
+    </article>
+
+    <!-- Volgende workshops komen hier — gewoon een nieuwe <article class="workshop-card"> kopiëren. -->
+
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer-tagline">Start klein. Groei groot.</p>
+    <p class="footer-meta">
+      Nadir Chajia · Accredited Life Coach · © BABL Methode  ·
+      <a href="./">Terug naar de hoofdpagina</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Sticky nav scroll state
+  (function() {
+    const wrap = document.querySelector('.nav-wrap');
+    if (!wrap) return;
+    function check() { wrap.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  // Mobile hamburger drawer
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      links.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
