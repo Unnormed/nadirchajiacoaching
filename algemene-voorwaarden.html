@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algemene voorwaarden · Nadir Chajia</title>
+<meta name="description" content="Algemene voorwaarden voor de coachingsdiensten van Nadir Chajia.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --babl-green: #1f3c2c;
+    --babl-green-deep: #15281f;
+    --babl-moss: #8b9d7a;
+    --babl-cream: #f4ede1;
+    --babl-sand: #e8ddc8;
+    --babl-ochre: #c68954;
+    --babl-clay: #a86a3d;
+    --babl-lavender: #dcd6e0;
+    --babl-ink: #1a1a1a;
+    --babl-ink-60: rgba(26, 26, 26, 0.6);
+    --babl-ink-40: rgba(26, 26, 26, 0.4);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --container-max: 1280px;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400; font-size: 16px; line-height: 1.6;
+    color: var(--babl-ink); background: var(--babl-cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+
+  .shell {
+    max-width: calc(var(--container-max) + 64px);
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-wrap { position: sticky; top: 12px; z-index: 50; }
+  .nav {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-radius: var(--radius);
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s, background 0.3s, padding 0.3s;
+  }
+  .nav-wrap.scrolled .nav {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 28px rgba(31, 60, 44, 0.08);
+    padding: 14px 32px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--babl-green); }
+  .logo-mark { height: 36px; width: auto; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .logo:hover .logo-mark { transform: rotate(-4deg) scale(1.04); }
+  .logo-text { display: flex; align-items: baseline; gap: 10px; }
+  .logo-name { font-family: var(--font-display); font-size: 22px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; white-space: nowrap; }
+  .logo-label { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 16px; color: var(--babl-ochre); letter-spacing: 0.3px; line-height: 1; }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--babl-ink); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--babl-green); }
+  .nav-links .mobile-cta { display: none; }
+
+  .nav-cta {
+    padding: 10px 18px; background: var(--babl-ochre);
+    color: #fff; border: none; border-radius: 24px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover { background: var(--babl-clay); transform: translateY(-1px); }
+
+  /* ---------- HEADER ---------- */
+  .legal-header {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 72px 64px 56px;
+  }
+  .legal-header .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 22px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .legal-header .kicker::before {
+    content: ''; width: 24px; height: 1px; background: var(--babl-ochre);
+  }
+  .legal-header h1 {
+    font-family: var(--font-display);
+    font-weight: 400; font-size: 56px; line-height: 1.05;
+    letter-spacing: -0.5px; color: var(--babl-ink);
+    margin-bottom: 16px;
+  }
+  .legal-header .updated {
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.5px;
+    color: var(--babl-ink-60);
+  }
+
+  /* ---------- LEGAL CONTENT ---------- */
+  .legal-body {
+    background: #fff;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    padding: 64px 64px 72px;
+  }
+
+  .toc {
+    background: var(--babl-cream);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    border: 1px solid rgba(31, 60, 44, 0.08);
+  }
+  .toc h2 {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--babl-ochre);
+    margin-bottom: 14px; font-weight: 500;
+  }
+  .toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 24px; }
+  .toc li { counter-increment: toc; padding: 4px 0; break-inside: avoid; }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero) ' · ';
+    color: var(--babl-ochre);
+    font-family: var(--font-mono); font-size: 11px; margin-right: 4px;
+  }
+  .toc a { color: var(--babl-ink); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .toc a:hover { color: var(--babl-green); }
+
+  .prose { max-width: 720px; }
+  .prose section { margin-bottom: 44px; scroll-margin-top: 100px; }
+  .prose section:last-child { margin-bottom: 0; }
+
+  .prose h2 {
+    font-family: var(--font-display);
+    font-weight: 500; font-size: 28px;
+    color: var(--babl-green);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.2px;
+  }
+  .prose h3 {
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 15px; color: var(--babl-ink);
+    margin-top: 20px; margin-bottom: 8px; letter-spacing: 0.1px;
+  }
+  .prose p {
+    font-size: 15.5px; color: var(--babl-ink);
+    line-height: 1.75; margin-bottom: 14px;
+  }
+  .prose p strong { font-weight: 600; }
+  .prose ul { margin: 8px 0 16px 0; padding-left: 22px; }
+  .prose li { font-size: 15.5px; line-height: 1.7; margin-bottom: 6px; }
+  .prose a {
+    color: var(--babl-green);
+    text-decoration: underline;
+    text-decoration-color: rgba(31, 60, 44, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.2s;
+  }
+  .prose a:hover { text-decoration-color: var(--babl-green); }
+
+  .callout {
+    background: var(--babl-cream);
+    border-left: 3px solid var(--babl-ochre);
+    padding: 18px 22px; margin: 16px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .callout p { font-size: 14.5px; margin-bottom: 0; color: var(--babl-ink-60); }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--babl-ink-60);
+  }
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic; font-size: 18px;
+    color: var(--babl-green); margin-bottom: 8px;
+  }
+  .footer-meta { font-size: 12px; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .footer-legal { font-size: 12px; letter-spacing: 0.5px; }
+  .footer a { color: var(--babl-ink-60); text-decoration: none; transition: color 0.2s; }
+  .footer a:hover { color: var(--babl-green); }
+  .footer-legal a { margin: 0 8px; }
+
+  /* ---------- MOBILE NAV TOGGLE ---------- */
+  .nav-toggle {
+    display: none; background: transparent; border: none;
+    cursor: pointer; padding: 10px; width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px; margin-left: auto;
+  }
+  .nav-toggle .bar {
+    display: block; width: 22px; height: 1.6px;
+    background: var(--babl-ink); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.2s; transform-origin: center;
+  }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .legal-header { padding: 56px 32px 40px; }
+    .legal-header h1 { font-size: 42px; }
+    .legal-body { padding: 40px 32px 56px; }
+    .toc ol { columns: 1; }
+
+    .nav-toggle { display: flex; order: 3; }
+    .nav { flex-wrap: wrap; position: relative; gap: 8px; }
+    .nav .nav-cta { order: 2; padding: 8px 14px; font-size: 12px; gap: 6px; }
+    .nav .nav-cta svg { width: 10px; height: 10px; }
+    .nav .logo { order: 1; flex-direction: row; align-items: center; gap: 10px; min-width: 0; }
+    .nav .logo-mark { height: 32px; }
+    .nav .logo-text { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .nav .logo-name { font-size: 17px; }
+    .nav .logo-label { font-size: 12px; }
+
+    .nav-links {
+      display: none; flex-direction: column; align-items: stretch;
+      width: 100%; gap: 0; margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid rgba(31, 60, 44, 0.1); flex-basis: 100%;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 14px 4px; font-size: 16px; border-bottom: 1px solid rgba(31, 60, 44, 0.06); }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links .mobile-cta {
+      display: inline-flex; margin-top: 14px; padding: 14px 22px;
+      background: var(--babl-ochre); color: #fff; border-radius: 28px;
+      font-size: 14px; font-weight: 500;
+      align-items: center; justify-content: center;
+      gap: 8px; border-bottom: none !important;
+    }
+    .nav-links .mobile-cta:hover { background: var(--babl-clay); }
+    .nav { padding: 14px 20px; }
+  }
+
+  @media (max-width: 520px) {
+    .nav .nav-cta { display: none; }
+    .shell { padding: 12px; }
+    .legal-header { padding: 44px 24px 32px; }
+    .legal-header h1 { font-size: 34px; }
+    .legal-body { padding: 32px 24px 48px; }
+    .prose h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
+  <nav class="nav">
+    <a href="./" class="logo">
+      <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342.94 229.63" aria-hidden="true">
+        <path d="M.03,19.42c.09,45.16-.19,191.59.12,200.77.2,1.97.98,1.6,2.9,1.64,12.83.05,42.45.08,58.2.06,1.93.36.97-8.6,1.19-10.07.07-10.96-.05-94.52,0-128.56-1.12-7.74,14.49-46.85,40.65-56.65,18.15-6.79,36.35.94,39.01,20.39,1.24,15.57.62,31.31,1.16,46.94.42,14.59.09,29.24,1,43.8,5.93,45.75,43.85,85.03,92.35,90.26,37.51,6.99,79.5-8.59,97.93-47.11,3.05-6.4,5.41-13.49,6.84-21,.3-1.27.41-2.81-.07-3.88-.89-2-4.76-2.02-6.67-.61-1.17.79-1.56,2.14-1.93,3.47-2.38,9.77-7,19.54-13.47,28.2-14.44,19.84-39.33,33.21-64.43,32.34-11.59.27-32.71-6.33-37.54-20.83-13.03-38.1-7.93-82.36-9.56-131.04-1.59-47.6-38.64-71.42-79.41-62.87-28.35,5.09-50.54,22.49-64.3,44.94-.68-12.45-.01-39.66-.24-47.98.39-3.07-2.92-1.07-4.65-.33C43.79,9.76,21.4,11.1.03,11.21" fill="#1F3C2C"/>
+        <path d="M249.46,4.68c9.74-1.64,25.75-2.77,43.54,3.38,5.13,1.77,29.8,10.86,41.08,32.18,5.03,9.51,4.77,16.49,4.64,18.51-.17,2.59-1.03,10.37-5.63,15.51-9.61,10.75-31.99,6.29-40.35,2.12-24.53-12.25-41.97-58.54-43.28-71.69Z" fill="#C68954"/>
+        <path d="M338.78,92.5c-17.99-37.09-51.22-65.11-86.25-85.73,36.16,19.76,70.3,46.94,89.83,83.94,0,0-3.58,1.78-3.58,1.78h0Z" fill="#C68954"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-name">Nadir Chajia</span>
+        <span class="logo-label">coaching</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="./#methode">De Methode</a></li>
+      <li><a href="./#traject">Het Traject</a></li>
+      <li><a href="./wandelcoaching.html">Wandelcoaching</a></li>
+      <li><a href="./#over">Over Nadir</a></li>
+      <li><a class="mobile-cta" href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener">Gratis kennismaking
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a></li>
+    </ul>
+    <a href="https://calendar.app.google/321kf6mGHT9XLRyA9" target="_blank" rel="noopener" class="nav-cta">
+      Gratis kennismaking
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <section class="legal-header">
+    <span class="kicker">Voorwaarden</span>
+    <h1>Algemene voorwaarden</h1>
+    <p class="updated">Laatst bijgewerkt: 4 mei 2026</p>
+  </section>
+
+  <!-- ============ BODY ============ -->
+  <section class="legal-body">
+
+    <nav class="toc" aria-label="Inhoudsopgave">
+      <h2>Inhoud</h2>
+      <ol>
+        <li><a href="#toepassing">Toepassingsgebied</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#inschrijving">Inschrijving en betaling</a></li>
+        <li><a href="#annulatie">Annulatie en wijziging</a></li>
+        <li><a href="#aansprakelijkheid">Aansprakelijkheid</a></li>
+        <li><a href="#vertrouwelijkheid">Vertrouwelijkheid</a></li>
+        <li><a href="#intellectueel">Intellectuele eigendom</a></li>
+        <li><a href="#klachten">Klachten</a></li>
+        <li><a href="#recht">Toepasselijk recht</a></li>
+        <li><a href="#wijzigingen">Wijzigingen</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <section id="toepassing">
+        <h2>1. Toepassingsgebied</h2>
+        <p>
+          Deze algemene voorwaarden zijn van toepassing op alle diensten die door <strong>Nadir Chajia</strong> (hierna: "de coach") worden aangeboden via deze website (<a href="https://nadirchajia.be">nadirchajia.be</a>) of in het kader van de BABL Methode. Door zich in te schrijven voor een traject, sessie of workshop verklaart de klant kennis te hebben genomen van deze voorwaarden en ze te aanvaarden.
+        </p>
+        <p>
+          Eventuele afwijkingen van deze voorwaarden zijn enkel geldig wanneer ze schriftelijk werden overeengekomen.
+        </p>
+      </section>
+
+      <section id="diensten">
+        <h2>2. Diensten</h2>
+        <p>De coach biedt onder meer aan:</p>
+        <ul>
+          <li>Individuele coachingstrajecten volgens de BABL Methode</li>
+          <li>Eénmalige coachingsessies en kennismakingsgesprekken</li>
+          <li>Wandelcoaching in groep of individueel</li>
+          <li>Workshops rond welbevinden, richting en persoonlijke ontwikkeling</li>
+        </ul>
+        <p>
+          Coaching is een vorm van professionele begeleiding gericht op zelfreflectie, persoonlijke ontwikkeling en verandering. Het is uitdrukkelijk <strong>geen vorm van psychotherapie, medische zorg of behandeling</strong> van psychische of fysieke aandoeningen.
+        </p>
+      </section>
+
+      <section id="inschrijving">
+        <h2>3. Inschrijving en betaling</h2>
+        <p>
+          Een inschrijving voor een traject, sessie of workshop is definitief na bevestiging via e-mail door de coach. De prijzen worden duidelijk gecommuniceerd op de website of in een individuele offerte en zijn inclusief eventueel verschuldigde belastingen, tenzij anders vermeld.
+        </p>
+        <p>
+          Tenzij anders overeengekomen, gebeurt de betaling vooraf of binnen 14 dagen na factuurdatum. Bij niet-tijdige betaling kunnen wettelijke verwijlinteresten en een schadebeding in rekening worden gebracht.
+        </p>
+      </section>
+
+      <section id="annulatie">
+        <h2>4. Annulatie en wijziging</h2>
+
+        <h3>Annulatie door de klant</h3>
+        <p>
+          Annulaties dienen schriftelijk (per e-mail) te gebeuren. De volgende voorwaarden gelden, tenzij vooraf anders overeengekomen:
+        </p>
+        <ul>
+          <li>Annulatie meer dan 7 dagen vóór de sessie of workshop: volledige terugbetaling.</li>
+          <li>Annulatie tussen 48 uur en 7 dagen vóór de sessie of workshop: 50% terugbetaling.</li>
+          <li>Annulatie minder dan 48 uur vóór de sessie of workshop: geen terugbetaling.</li>
+        </ul>
+        <p>
+          Bij overmacht (ernstige ziekte, ongeval, e.d.) wordt in onderling overleg gezocht naar een passende oplossing, zoals het verplaatsen van de afspraak.
+        </p>
+
+        <h3>Annulatie door de coach</h3>
+        <p>
+          De coach behoudt zich het recht voor om een sessie of workshop te annuleren of te verplaatsen, bijvoorbeeld bij overmacht of bij onvoldoende inschrijvingen voor een groepsactiviteit. In dat geval wordt het reeds betaalde bedrag volledig terugbetaald, of in onderling overleg een nieuwe datum afgesproken.
+        </p>
+      </section>
+
+      <section id="aansprakelijkheid">
+        <h2>5. Aansprakelijkheid</h2>
+        <p>
+          De coach engageert zich om de diensten naar best vermogen en met zorg uit te voeren. Het gaat hier om een <strong>middelenverbintenis</strong> en geen resultaatverbintenis: de uitkomst van een coachingstraject hangt sterk af van het engagement, de inzet en de keuzes van de klant zelf.
+        </p>
+        <p>
+          De klant blijft te allen tijde verantwoordelijk voor de eigen beslissingen, gedragingen en gezondheid. Coaching vervangt geen medische of psychotherapeutische zorg. Wanneer de coach inschat dat een vraag eerder thuishoort bij een andere zorgverlener, wordt dit besproken en kan worden doorverwezen.
+        </p>
+        <p>
+          De aansprakelijkheid van de coach is in elk geval beperkt tot het bedrag dat door de klant werd betaald voor de betreffende dienst. De coach kan niet aansprakelijk gesteld worden voor indirecte schade, zoals winstderving of immateriële schade.
+        </p>
+      </section>
+
+      <section id="vertrouwelijkheid">
+        <h2>6. Vertrouwelijkheid</h2>
+        <p>
+          Alles wat tijdens een sessie wordt besproken, blijft strikt vertrouwelijk. De coach deelt geen inhoud van gesprekken met derden, tenzij met uitdrukkelijke toestemming van de klant of wanneer dit wettelijk verplicht is.
+        </p>
+        <p>
+          De verwerking van persoonsgegevens gebeurt conform onze <a href="./privacy.html">privacyverklaring</a>.
+        </p>
+      </section>
+
+      <section id="intellectueel">
+        <h2>7. Intellectuele eigendom</h2>
+        <p>
+          Alle materialen, methodes en documenten die door de coach worden ontwikkeld of ter beschikking gesteld — waaronder de BABL Methode, werkbladen, oefeningen, presentaties en teksten op deze website — blijven de intellectuele eigendom van Nadir Chajia. Deze materialen mogen enkel voor persoonlijk gebruik door de klant worden aangewend en niet zonder voorafgaande schriftelijke toestemming worden gereproduceerd, gedeeld of commercieel gebruikt.
+        </p>
+      </section>
+
+      <section id="klachten">
+        <h2>8. Klachten</h2>
+        <p>
+          Eventuele klachten worden bij voorkeur eerst rechtstreeks besproken via <a href="mailto:info@nadirchajia.be">info@nadirchajia.be</a>. We streven naar een minnelijke oplossing binnen een redelijke termijn.
+        </p>
+        <div class="callout">
+          <p>
+            Als consument kan je voor geschillen ook terecht bij het Europese platform voor onlinegeschillenbeslechting: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.
+          </p>
+        </div>
+      </section>
+
+      <section id="recht">
+        <h2>9. Toepasselijk recht en bevoegde rechtbank</h2>
+        <p>
+          Op deze voorwaarden en op alle overeenkomsten tussen de coach en de klant is uitsluitend het <strong>Belgische recht</strong> van toepassing. Geschillen die niet in der minne kunnen worden geregeld, worden beslecht door de bevoegde rechtbanken van het arrondissement waar de coach gevestigd is.
+        </p>
+      </section>
+
+      <section id="wijzigingen">
+        <h2>10. Wijzigingen</h2>
+        <p>
+          De coach behoudt zich het recht voor om deze algemene voorwaarden in de toekomst aan te passen. De meest recente versie staat altijd op deze pagina, met de datum van de laatste wijziging bovenaan.
+        </p>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer-tagline">Start klein. Groei groot.</p>
+    <p class="footer-meta">
+      Nadir Chajia · Accredited Life Coach · © BABL Methode  ·
+      <a href="./">Terug naar de hoofdpagina</a>
+    </p>
+    <p class="footer-legal">
+      <a href="./privacy.html">Privacy</a> ·
+      <a href="./cookies.html">Cookies</a> ·
+      <a href="./algemene-voorwaarden.html">Algemene voorwaarden</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  (function() {
+    const wrap = document.querySelector('.nav-wrap');
+    if (!wrap) return;
+    function check() { wrap.classList.toggle('scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  (function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      links.classList.toggle('open', open);
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960 && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
