@@ -2,9 +2,18 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
+  "rewrites": [
+    { "source": "/stats", "destination": "/api/stats" }
+  ],
   "headers": [
     {
       "source": "/(workshops|vision-board-workshop)(\\.html)?",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/stats",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]
