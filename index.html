@@ -1260,14 +1260,14 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero-text">
-      <span class="hero-kicker">Build A Balanced Life</span>
+      <span class="hero-kicker" data-cms="home.hero.kicker">Build A Balanced Life</span>
       <h1>Start klein.<br><em>Groei</em> groot.</h1>
-      <p class="hero-body">
+      <p class="hero-body" data-cms="home.hero.body">
         Twaalf weken. Zes sessies. Eén duurzaam systeem voor meer balans, energie en richting. Voor werkende mensen die merken dat hun huidige manier van leven niet meer werkt.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">
-          Boek een kennismaking
+          <span data-cms="home.hero.cta_primary">Boek een kennismaking</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </a>
         <a href="#methode" class="btn btn-ghost">
@@ -1293,15 +1293,15 @@
           <circle cx="20" cy="20" r="16"/>
           <path d="M14 20h12M20 14v12"/>
         </svg>
-        <h3>Leef je op automatische piloot?</h3>
-        <p>Werk neemt al je energie in beslag, persoonlijke doelen schuiven naar achteren, en je voelt dat de dagen op elkaar gaan lijken. Je doet veel, maar niet het juiste.</p>
+        <h3 data-cms="home.problem.card1.title">Leef je op automatische piloot?</h3>
+        <p data-cms="home.problem.card1.body">Werk neemt al je energie in beslag, persoonlijke doelen schuiven naar achteren, en je voelt dat de dagen op elkaar gaan lijken. Je doet veel, maar niet het juiste.</p>
       </div>
       <div class="problem-card">
         <svg class="icon" viewBox="0 0 40 40">
           <path d="M20 4l4 8 8 2-6 6 2 8-8-4-8 4 2-8-6-6 8-2z"/>
         </svg>
-        <h3>Vreet je werk al je energie op?</h3>
-        <p>Mails om 22u, weekendwerk dat niet stopt, en tegen vrijdag is er niets meer over. Er móét iets veranderen aan hoe je werk en privé verweven zijn, maar je weet niet waar te beginnen.</p>
+        <h3 data-cms="home.problem.card2.title">Vreet je werk al je energie op?</h3>
+        <p data-cms="home.problem.card2.body">Mails om 22u, weekendwerk dat niet stopt, en tegen vrijdag is er niets meer over. Er móét iets veranderen aan hoe je werk en privé verweven zijn, maar je weet niet waar te beginnen.</p>
       </div>
       <div class="problem-card">
         <svg class="icon" viewBox="0 0 40 40">
@@ -1309,15 +1309,15 @@
           <circle cx="8" cy="32" r="2"/>
           <circle cx="32" cy="8" r="2"/>
         </svg>
-        <h3>Kom je nooit toe aan wat écht telt?</h3>
-        <p>Die sportroutine, dat project, tijd voor de mensen die je liefhebt. Goede voornemens verdwijnen in de ruis. Niet omdat je niet wilt, maar omdat je systeem het niet ondersteunt.</p>
+        <h3 data-cms="home.problem.card3.title">Kom je nooit toe aan wat écht telt?</h3>
+        <p data-cms="home.problem.card3.body">Die sportroutine, dat project, tijd voor de mensen die je liefhebt. Goede voornemens verdwijnen in de ruis. Niet omdat je niet wilt, maar omdat je systeem het niet ondersteunt.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ BANNER ============ -->
   <section class="banner reveal">
-    <p>Leer hoe BABL je helpt om dit patroon te doorbreken</p>
+    <p data-cms="home.banner.text">Leer hoe BABL je helpt om dit patroon te doorbreken</p>
     <a href="#methode" class="banner-arrow">
       <svg width="18" height="18" viewBox="0 0 18 18"><path d="M4 9h10M10 5l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -1603,5 +1603,6 @@
   })();
 </script>
   <script src="/track.js" defer></script>
+  <script src="/cms.js" defer></script>
 </body>
 </html>
