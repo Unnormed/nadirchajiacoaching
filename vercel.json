@@ -3,7 +3,7 @@
   "outputDirectory": ".",
   "framework": null,
   "rewrites": [
-    { "source": "/stats", "destination": "/api/stats" }
+    { "source": "/admin", "destination": "/api/admin" }
   ],
   "headers": [
     {
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "source": "/stats",
+      "source": "/admin",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]

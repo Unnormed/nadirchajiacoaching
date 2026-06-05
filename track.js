@@ -4,7 +4,7 @@
 (function () {
   try {
     var path = location.pathname || "/";
-    if (path.indexOf("/stats") === 0) return; // het dashboard zelf niet meetellen
+    if (path.indexOf("/admin") === 0) return; // het admin-dashboard zelf niet meetellen
 
     var url =
       "/api/track?p=" +

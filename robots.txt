@@ -3,5 +3,5 @@ Disallow: /workshops
 Disallow: /workshops.html
 Disallow: /vision-board-workshop
 Disallow: /vision-board-workshop.html
-Disallow: /stats
+Disallow: /admin
 Disallow: /api/

@@ -1,16 +1,17 @@
-/* Beveiligd bezoekers-dashboard, bereikbaar via /stats.
-   Toont unieke bezoekers, paginaweergaven, een grafiek van de laatste 30 dagen,
-   toppagina's en verwijzers — in de huisstijl van de site.
+/* Beveiligd admin-dashboard, bereikbaar via /admin.
+   Sectie "Bezoekers": unieke bezoekers, paginaweergaven, een grafiek van de
+   laatste 30 dagen, toppagina's en verwijzers — in de huisstijl van de site.
+   (Hier komt later het inhoud-CMS naast.)
 
    Beveiliging: HTTP Basic Auth.
-   - STATS_PASSWORD  (verplicht)  het wachtwoord
-   - STATS_USER      (optioneel)  de gebruikersnaam, standaard "nadir"
+   - ADMIN_PASSWORD  (verplicht)  het wachtwoord
+   - ADMIN_USER      (optioneel)  de gebruikersnaam, standaard "nadir"
    Data komt uit Upstash Redis (KV_REST_API_URL / KV_REST_API_TOKEN). */
 
 const REDIS_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-const USER = process.env.STATS_USER || "nadir";
-const PASS = process.env.STATS_PASSWORD || "";
+const USER = process.env.ADMIN_USER || "nadir";
+const PASS = process.env.ADMIN_PASSWORD || "";
 
 function brusselsDay(date) {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Brussels" }).format(date);
@@ -54,6 +55,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:va
 .wrap{max-width:920px;margin:0 auto;padding:48px 24px 80px}
 h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:42px;color:var(--green);letter-spacing:.2px;line-height:1.05}
 .sub{color:var(--ink60);margin-top:6px;font-size:14px;font-family:'JetBrains Mono',monospace}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);font-weight:500;margin-bottom:10px}
 .muted{color:var(--ink60)}
 code{font-family:'JetBrains Mono',monospace;background:var(--sand);padding:2px 6px;border-radius:4px;font-size:.85em}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0}
@@ -80,7 +82,7 @@ function page(inner, refreshSec) {
     `<meta name="viewport" content="width=device-width,initial-scale=1">` +
     `<meta name="robots" content="noindex,nofollow">` +
     (refreshSec ? `<meta http-equiv="refresh" content="${refreshSec}">` : "") +
-    `<title>Statistieken · Nadir Chajia Coaching</title>` +
+    `<title>Admin · Nadir Chajia Coaching</title>` +
     `<link rel="icon" href="/favicon.svg" type="image/svg+xml">` +
     `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>` +
     `<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">` +
@@ -120,6 +122,7 @@ function rows(arr, empty) {
 function dashboard(d) {
   const inner = `
   <header>
+    <div class="kicker">Nadir Chajia Coaching · Admin</div>
     <h1>Bezoekers</h1>
     <div class="sub">nadirchajia.be · laatste 30 dagen · ${esc(brusselsDay(new Date()))} (Brussel)</div>
   </header>
@@ -152,12 +155,12 @@ module.exports = async (req, res) => {
   }
   if (!ok) {
     res.statusCode = 401;
-    res.setHeader("WWW-Authenticate", 'Basic realm="Nadir Chajia Coaching - Statistieken"');
+    res.setHeader("WWW-Authenticate", 'Basic realm="Nadir Chajia Coaching - Admin"');
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     const msg = PASS
       ? "Log in om de bezoekerscijfers te bekijken."
-      : 'Nog niet geconfigureerd: stel <code>STATS_PASSWORD</code> in bij de omgevingsvariabelen in Vercel.';
-    return res.end(page(`<h1>Statistieken</h1><p class="sub">${msg}</p>`));
+      : 'Nog niet geconfigureerd: stel <code>ADMIN_PASSWORD</code> in bij de omgevingsvariabelen in Vercel.';
+    return res.end(page(`<div class="kicker">Nadir Chajia Coaching · Admin</div><h1>Admin</h1><p class="sub">${msg}</p>`));
   }
 
   res.setHeader("Cache-Control", "no-store");
