@@ -608,9 +608,9 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <span class="hero-kicker">Workshops</span>
-    <h1>Eén onderwerp.<br>Eén <em>namiddag</em>. Iets tastbaars mee naar huis.</h1>
-    <p class="hero-body">
+    <span class="hero-kicker" data-cms="workshops.hero.kicker">Workshops</span>
+    <h1 data-cms="workshops.hero.title" data-cms-type="rich">Eén onderwerp.<br>Eén <em>namiddag</em>. Iets tastbaars mee naar huis.</h1>
+    <p class="hero-body" data-cms="workshops.hero.body" data-cms-type="rich">
       Naast de BABL Methode loop ik geregeld eenmalige workshops rond één concreet thema. Geen traject, geen abonnement — gewoon een paar uur samen rond iets dat je vooruit helpt. Hieronder vind je wat er op de planning staat.
     </p>
   </section>
@@ -622,22 +622,22 @@
       <div class="workshop-content">
         <div>
           <div class="workshop-meta">
-            <span class="workshop-badge"><span class="dot"></span> Coming soon</span>
-            <span class="workshop-price">€100 <small>· 4 uur</small></span>
+            <span class="workshop-badge"><span class="dot"></span> <span data-cms="workshops.vb.badge">Coming soon</span></span>
+            <span class="workshop-price"><span data-cms="workshops.vb.price">€100</span> <small data-cms="workshops.vb.duration">· 4 uur</small></span>
           </div>
         </div>
         <div>
-          <h2 class="workshop-title">Vision Board <em>Workshop</em></h2>
-          <p class="workshop-tagline">
+          <h2 class="workshop-title" data-cms="workshops.vb.title" data-cms-type="rich">Vision Board <em>Workshop</em></h2>
+          <p class="workshop-tagline" data-cms="workshops.vb.tagline" data-cms-type="rich">
             Maak een tastbaar beeld van de toekomst die je wilt — en leer hoe je hem ook in beweging zet.
           </p>
         </div>
         <div class="workshop-actions">
           <a href="https://forms.gle/rMNUdYWDfUULRCT19" target="_blank" rel="noopener" class="btn btn-primary">
-            Inschrijven
+            <span data-cms="workshops.vb.cta1">Inschrijven</span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </a>
-          <a href="./vision-board-workshop.html" class="btn btn-ghost">Meer informatie</a>
+          <a href="./vision-board-workshop.html" class="btn btn-ghost" data-cms="workshops.vb.cta2">Meer informatie</a>
         </div>
       </div>
       <a href="./vision-board-workshop.html" class="workshop-image" aria-label="Meer informatie over de Vision Board Workshop">
@@ -658,7 +658,7 @@
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <p class="footer-tagline">Start klein. Groei groot.</p>
+    <p class="footer-tagline" data-cms="workshops.footer.tagline">Start klein. Groei groot.</p>
     <p class="footer-meta">
       Nadir Chajia · Accredited Life Coach · © BABL Methode  ·
       <a href="./">Terug naar de hoofdpagina</a>
@@ -753,5 +753,6 @@
   })();
 </script>
   <script src="/track.js" defer></script>
+  <script src="/cms.js" defer></script>
 </body>
 </html>

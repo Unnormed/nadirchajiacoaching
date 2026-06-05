@@ -170,6 +170,17 @@ const FIELDS = [
   { id: "home.contact.small", group: "Contact", label: "Subtekst", type: "line", def: "Geen verkooppraatjes. Gewoon een gesprek." },
   { id: "home.footer.tagline", group: "Footer", label: "Slogan", type: "line", def: "Start klein. Groei groot." },
   { id: "home.footer.meta", group: "Footer", label: "Regel onderaan", type: "line", def: "Nadir Chajia · Accredited Life Coach · © BABL Methode" },
+  { id: "workshops.hero.kicker", group: "Workshops", label: "Hero — kicker", type: "line", def: "Workshops" },
+  { id: "workshops.hero.title", group: "Workshops", label: "Hero — titel", type: "rich", def: "Eén onderwerp.<br>Eén <em>namiddag</em>. Iets tastbaars mee naar huis." },
+  { id: "workshops.hero.body", group: "Workshops", label: "Hero — intro", type: "rich", def: "Naast de BABL Methode loop ik geregeld eenmalige workshops rond één concreet thema. Geen traject, geen abonnement — gewoon een paar uur samen rond iets dat je vooruit helpt. Hieronder vind je wat er op de planning staat." },
+  { id: "workshops.vb.badge", group: "Workshops", label: "Vision Board — badge", type: "line", def: "Coming soon" },
+  { id: "workshops.vb.price", group: "Workshops", label: "Vision Board — prijs", type: "line", def: "€100" },
+  { id: "workshops.vb.duration", group: "Workshops", label: "Vision Board — duur", type: "line", def: "· 4 uur" },
+  { id: "workshops.vb.title", group: "Workshops", label: "Vision Board — titel", type: "rich", def: "Vision Board <em>Workshop</em>" },
+  { id: "workshops.vb.tagline", group: "Workshops", label: "Vision Board — tagline", type: "rich", def: "Maak een tastbaar beeld van de toekomst die je wilt — en leer hoe je hem ook in beweging zet." },
+  { id: "workshops.vb.cta1", group: "Workshops", label: "Vision Board — knop 1", type: "line", def: "Inschrijven" },
+  { id: "workshops.vb.cta2", group: "Workshops", label: "Vision Board — knop 2", type: "line", def: "Meer informatie" },
+  { id: "workshops.footer.tagline", group: "Workshops", label: "Footer — slogan", type: "line", def: "Start klein. Groei groot." },
 ];
 const DEF = Object.fromEntries(FIELDS.map((f) => [f.id, f.def]));
 const TYPE = Object.fromEntries(FIELDS.map((f) => [f.id, f.type]));
