@@ -112,7 +112,64 @@ const FIELDS = [
   { id: "home.problem.card2.body", group: "Probleem", label: "Kaart 2 — tekst", type: "rich", def: "Mails om 22u, weekendwerk dat niet stopt, en tegen vrijdag is er niets meer over. Er móét iets veranderen aan hoe je werk en privé verweven zijn, maar je weet niet waar te beginnen." },
   { id: "home.problem.card3.title", group: "Probleem", label: "Kaart 3 — titel", type: "line", def: "Kom je nooit toe aan wat écht telt?" },
   { id: "home.problem.card3.body", group: "Probleem", label: "Kaart 3 — tekst", type: "rich", def: "Die sportroutine, dat project, tijd voor de mensen die je liefhebt. Goede voornemens verdwijnen in de ruis. Niet omdat je niet wilt, maar omdat je systeem het niet ondersteunt." },
-  { id: "home.banner.text", group: "Banner", label: "Bannertekst", type: "line", def: "Leer hoe BABL je helpt om dit patroon te doorbreken" },
+  { id: "home.banner.text", group: "Banners", label: "Banner 1 — tekst", type: "line", def: "Leer hoe BABL je helpt om dit patroon te doorbreken" },
+  { id: "home.smallbanner.text", group: "Banners", label: "Banner 2 — tekst", type: "line", def: "Balans is geen toeval. Het is een ontwerp." },
+  { id: "home.smallbanner.cta", group: "Banners", label: "Banner 2 — knop", type: "line", def: "Hoe werkt het?" },
+  { id: "home.method.kicker", group: "Methode", label: "Kicker", type: "line", def: "De BABL Methode" },
+  { id: "home.method.title", group: "Methode", label: "Titel", type: "rich", def: "Geen quick fix.<br><em>Een systeem</em> dat blijft werken." },
+  { id: "home.method.body", group: "Methode", label: "Tekst", type: "rich", def: "De BABL Methode is geen standaard coachingprogramma. Het is een gestructureerd pad van <span class=\"accent\">twaalf weken</span> waarin je stap voor stap een nieuw systeem bouwt, met balans, energie en richting als fundament. Geen tijdelijke motivatie. Een kader dat blijft werken, ook op dagen dat je het even kwijt bent." },
+  { id: "home.method.cta", group: "Methode", label: "Knoptekst", type: "line", def: "Bekijk het volledige traject" },
+  { id: "home.traject.kicker", group: "Traject", label: "Kicker", type: "line", def: "Drie bewegingen" },
+  { id: "home.traject.title", group: "Traject", label: "Titel", type: "rich", def: "Reset. Rebuild. <em>Reinforce.</em>" },
+  { id: "home.traject.lead", group: "Traject", label: "Inleiding", type: "rich", def: "Elke beweging heeft een helder doel en wordt gedragen door twee sessies. Samen vormen ze één logische boog: van eerlijk kijken, naar nieuw ontwerpen, naar verankeren." },
+  { id: "home.traject.act1.title", group: "Traject", label: "Stap 1 — titel", type: "line", def: "RESET" },
+  { id: "home.traject.act1.subtitle", group: "Traject", label: "Stap 1 — ondertitel", type: "line", def: "Oude systeem breken" },
+  { id: "home.traject.act1.body", group: "Traject", label: "Stap 1 — tekst", type: "rich", def: "Je kijkt eerlijk naar hoe je leven er vandaag écht uitziet: in werk, relaties, gezondheid, energie en tijd. En je kiest een nieuwe richting vanuit je eigen waarden." },
+  { id: "home.traject.act2.title", group: "Traject", label: "Stap 2 — titel", type: "line", def: "REBUILD" },
+  { id: "home.traject.act2.subtitle", group: "Traject", label: "Stap 2 — ondertitel", type: "line", def: "Nieuw systeem bouwen" },
+  { id: "home.traject.act2.body", group: "Traject", label: "Stap 2 — tekst", type: "rich", def: "Je ontwerpt de principes van je nieuwe leven: non-negotiables, grenzen, wat uit je leven verdwijnt. Daarna zet je die blueprint in je agenda en ga je er voor het eerst echt in leven." },
+  { id: "home.traject.act3.title", group: "Traject", label: "Stap 3 — titel", type: "line", def: "REINFORCE" },
+  { id: "home.traject.act3.subtitle", group: "Traject", label: "Stap 3 — ondertitel", type: "line", def: "Gedrag verankeren" },
+  { id: "home.traject.act3.body", group: "Traject", label: "Stap 3 — tekst", type: "rich", def: "Je automatiseert wat werkt, verankert je nieuwe identiteit en bouwt een plan voor de zes maanden na het traject, inclusief wat je doet als je terugvalt." },
+  { id: "home.aanbod.title", group: "Aanbod", label: "Titel", type: "rich", def: "Wat je <em>meeneemt</em>." },
+  { id: "home.aanbod.intro", group: "Aanbod", label: "Inleiding", type: "rich", def: "Aan het einde van twaalf weken heb je geen tijdelijke motivatie, maar een concreet persoonlijk kader dat houvast biedt in je dagelijkse leven." },
+  { id: "home.aanbod.item1.title", group: "Aanbod", label: "Item 1 — titel", type: "line", def: "Zes coachingsessies" },
+  { id: "home.aanbod.item1.body", group: "Aanbod", label: "Item 1 — tekst", type: "line", def: "Van 60 tot 90 minuten, individueel begeleid." },
+  { id: "home.aanbod.item2.title", group: "Aanbod", label: "Item 2 — titel", type: "line", def: "Wekelijkse check-ins" },
+  { id: "home.aanbod.item2.body", group: "Aanbod", label: "Item 2 — tekst", type: "line", def: "Drie vaste vragen via WhatsApp of e-mail, tussen sessies door." },
+  { id: "home.aanbod.item3.title", group: "Aanbod", label: "Item 3 — titel", type: "line", def: "Het BABL Werkboek" },
+  { id: "home.aanbod.item3.body", group: "Aanbod", label: "Item 3 — tekst", type: "line", def: "Alle oefeningen, reflecties en templates in één document." },
+  { id: "home.aanbod.item4.title", group: "Aanbod", label: "Item 4 — titel", type: "line", def: "Persoonlijk BABL-Plan" },
+  { id: "home.aanbod.item4.body", group: "Aanbod", label: "Item 4 — tekst", type: "line", def: "Jouw kader op één A4, bruikbaar voor zes maanden na het traject." },
+  { id: "home.aanbod.item5.title", group: "Aanbod", label: "Item 5 — titel", type: "line", def: "Intakeformulier vooraf" },
+  { id: "home.aanbod.item5.body", group: "Aanbod", label: "Item 5 — tekst", type: "line", def: "Zodat sessie 1 meteen de diepte in kan, zonder opwarming." },
+  { id: "home.aanbod.item6.title", group: "Aanbod", label: "Item 6 — titel", type: "line", def: "Terugval-plan" },
+  { id: "home.aanbod.item6.body", group: "Aanbod", label: "Item 6 — tekst", type: "line", def: "Concreet protocol voor als het moeilijk wordt. Want dat komt." },
+  { id: "home.over.kicker", group: "Over Nadir", label: "Kicker", type: "line", def: "Over Nadir" },
+  { id: "home.over.title", group: "Over Nadir", label: "Titel", type: "rich", def: "Ik ben geen therapeut.<br><em>Ik ben je coach.</em>" },
+  { id: "home.over.body1", group: "Over Nadir", label: "Paragraaf 1", type: "rich", def: "Ik werk al vier jaar als HR consultant. Ik help mensen de juiste job te vinden en ondersteun bedrijven in het welzijn van hun medewerkers. Daarin merk ik elke dag waar mijn echte energie ligt: mensen zien groeien." },
+  { id: "home.over.body2", group: "Over Nadir", label: "Paragraaf 2", type: "rich", def: "Ik verdiepte me in coaching en persoonlijke ontwikkeling, behaalde mijn Accredited Life Coach certificaat, en bouwde de BABL Methode uit de patronen die ik keer op keer zie bij de mensen die ik begeleid." },
+  { id: "home.over.quote", group: "Over Nadir", label: "Citaat", type: "rich", def: "\"Ik ben geen psycholoog of therapeut. Mijn focus ligt op groei en actie. Wanneer nodig verwijs ik door naar gespecialiseerde hulp.\"" },
+  { id: "home.over.body3", group: "Over Nadir", label: "Paragraaf 3", type: "rich", def: "Wat ik wél doe: bouwen aan systemen die blijven werken. Niet morgen. Over zes maanden." },
+  { id: "home.praktisch.item1.label", group: "Praktisch", label: "Blok 1 — label", type: "line", def: "Duur" },
+  { id: "home.praktisch.item1.value", group: "Praktisch", label: "Blok 1 — waarde", type: "line", def: "12 weken" },
+  { id: "home.praktisch.item1.note", group: "Praktisch", label: "Blok 1 — toelichting", type: "line", def: "Zes sessies van 60–90 min" },
+  { id: "home.praktisch.item2.label", group: "Praktisch", label: "Blok 2 — label", type: "line", def: "Vorm" },
+  { id: "home.praktisch.item2.value", group: "Praktisch", label: "Blok 2 — waarde", type: "line", def: "1-op-1" },
+  { id: "home.praktisch.item2.note", group: "Praktisch", label: "Blok 2 — toelichting", type: "line", def: "Online of in persoon" },
+  { id: "home.praktisch.item3.label", group: "Praktisch", label: "Blok 3 — label", type: "line", def: "Investering" },
+  { id: "home.praktisch.item3.value", group: "Praktisch", label: "Blok 3 — waarde", type: "line", def: "€750" },
+  { id: "home.praktisch.item3.note", group: "Praktisch", label: "Blok 3 — toelichting", type: "line", def: "Voor het volledige traject" },
+  { id: "home.praktisch.item4.label", group: "Praktisch", label: "Blok 4 — label", type: "line", def: "Start" },
+  { id: "home.praktisch.item4.value", group: "Praktisch", label: "Blok 4 — waarde", type: "line", def: "Na een gesprek" },
+  { id: "home.praktisch.item4.note", group: "Praktisch", label: "Blok 4 — toelichting", type: "line", def: "30 min gratis kennismaking" },
+  { id: "home.contact.kicker", group: "Contact", label: "Kicker", type: "line", def: "Klaar om te starten?" },
+  { id: "home.contact.title", group: "Contact", label: "Titel", type: "rich", def: "Begin met één gesprek.<br><em>Zonder druk.</em>" },
+  { id: "home.contact.body", group: "Contact", label: "Tekst", type: "rich", def: "We plannen een gratis kennismakingsgesprek van dertig minuten. Daarin bekijken we samen waar je vandaag staat, wat je zoekt, en of dit traject de juiste volgende stap voor je is." },
+  { id: "home.contact.cta", group: "Contact", label: "Knoptekst", type: "line", def: "Boek nu je kennismakingsgesprek in" },
+  { id: "home.contact.small", group: "Contact", label: "Subtekst", type: "line", def: "Geen verkooppraatjes. Gewoon een gesprek." },
+  { id: "home.footer.tagline", group: "Footer", label: "Slogan", type: "line", def: "Start klein. Groei groot." },
+  { id: "home.footer.meta", group: "Footer", label: "Regel onderaan", type: "line", def: "Nadir Chajia · Accredited Life Coach · © BABL Methode" },
 ];
 const DEF = Object.fromEntries(FIELDS.map((f) => [f.id, f.def]));
 const TYPE = Object.fromEntries(FIELDS.map((f) => [f.id, f.type]));
@@ -125,13 +182,15 @@ function sanitizeRich(html) {
   s = s.replace(/<\s*strong(\s[^>]*)?>/gi, "<strong>").replace(/<\s*\/\s*strong\s*>/gi, "</strong>");
   s = s.replace(/<\s*i(\s[^>]*)?>/gi, "<em>").replace(/<\s*\/\s*i\s*>/gi, "</em>");
   s = s.replace(/<\s*em(\s[^>]*)?>/gi, "<em>").replace(/<\s*\/\s*em\s*>/gi, "</em>");
+  s = s.replace(/<\s*u(\s[^>]*)?>/gi, "<u>").replace(/<\s*\/\s*u\s*>/gi, "</u>");
   s = s.replace(/<\s*br\s*\/?\s*>/gi, "<br>");
+  s = s.replace(/<span\b[^>]*\bclass\s*=\s*"(?:[^"]*\s)?accent(?:\s[^"]*)?"[^>]*>/gi, "[[ACC]]").replace(/<span\b[^>]*>/gi, "<span>").replace(/\[\[ACC\]\]/g, '<span class="accent">');
   s = s.replace(/<a\b[^>]*?href\s*=\s*"([^"]*)"[^>]*>/gi, (m, href) =>
     /^(https?:\/\/|mailto:|\/)/i.test(href) ? '<a href="' + href.replace(/"/g, "&quot;") + '" target="_blank" rel="noopener">' : ""
   );
   s = s.replace(/<a\b[^>]*>/gi, "");
   s = s.replace(/<\s*\/\s*a\s*>/gi, "</a>");
-  s = s.replace(/<(?!\/?(strong|em|br|a)\b)[^>]*>/gi, "");
+  s = s.replace(/<(?!\/?(strong|em|u|br|a|span)\b)[^>]*>/gi, "");
   return s.trim();
 }
 function cleanValue(id, raw) {
@@ -309,6 +368,7 @@ const EDITOR_JS = `(function(){
         '<div class="rt-tb">'+
         '<button type="button" class="rtb" data-cmd="bold" title="Vet"><b>B</b></button>'+
         '<button type="button" class="rtb" data-cmd="italic" title="Cursief"><i>I</i></button>'+
+        '<button type="button" class="rtb" data-cmd="underline" title="Onderlijnen"><u>U</u></button>'+
         '<button type="button" class="rtb" data-cmd="createLink" title="Link toevoegen">Link</button>'+
         '<button type="button" class="rtb" data-cmd="unlink" title="Link weghalen">Geen link</button>'+
         '</div><div class="rt" data-id="'+esc(f.id)+'" contenteditable="true">'+f.value+'</div></div>';
