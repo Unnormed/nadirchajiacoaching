@@ -503,6 +503,30 @@
   .portrait-label .name { color: var(--babl-green); }
   .portrait-label .title { color: var(--babl-clay); opacity: 1; }
   .portrait-label::after { content:''; position:absolute; left:16px; bottom:-8px; width:18px; height:18px; background:var(--babl-cream); transform:rotate(45deg); border-bottom-left-radius:4px; }
+
+  /* ===== BABL ambient + subpaginas (brand-restyle) ===== */
+  body::before { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(38vw 38vw at 12% 16%, rgba(224,121,75,.10), transparent 60%),
+      radial-gradient(44vw 44vw at 88% 28%, rgba(122,111,194,.10), transparent 60%),
+      radial-gradient(48vw 48vw at 50% 94%, rgba(78,159,84,.09), transparent 62%); }
+  h1 em, h2 em, h3 em { color: var(--babl-coral); }
+  .kicker { background: var(--babl-sand); color: var(--babl-clay); padding: 8px 16px; border-radius: 100px; }
+  .cta-final .kicker, .interest .kicker { background: rgba(244,237,225,.16); color: var(--babl-cream); }
+  .kicker::after { content:''; display:inline-block; width:14px; height:14px; margin-left:8px; vertical-align:middle; background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 0C13 9 15 11 24 12C15 13 13 15 12 24C11 15 9 13 0 12C9 11 11 9 12 0Z' fill='%23e0794b'/></svg>") no-repeat center/contain; }
+  /* wandelcoaching: pijlers als color-blocking + accent-nummers */
+  .pillar:nth-child(1) { background: var(--babl-cream); }
+  .pillar:nth-child(2) { background: var(--babl-sand); }
+  .pillar:nth-child(3) { background: var(--babl-iris); color: var(--babl-cream); }
+  .pillar:nth-child(3) h3, .pillar:nth-child(3) p { color: var(--babl-cream); }
+  .pillar .num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; display: block; margin-bottom: 14px; }
+  .pillar:nth-child(1) .num { color: var(--babl-coral); }
+  .pillar:nth-child(2) .num { color: var(--babl-iris); }
+  .pillar:nth-child(3) .num { color: var(--babl-cream); }
+  .audience-list .marker { color: var(--babl-coral); }
+  .audience-list li:nth-child(2) .marker { color: var(--babl-iris); }
+  .audience-list li:nth-child(3) .marker { color: var(--babl-spring); }
+  .audience-list li:nth-child(4) .marker { color: var(--babl-clay); }
 </style>
 </head>
 <body>

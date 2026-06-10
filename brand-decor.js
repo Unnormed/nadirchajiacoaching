@@ -1,8 +1,6 @@
-/* Brand-decoratie voor nadirchajia.be — puur visueel.
-   Hangt merk-shapes achter de foto's en plakt sticker-shapes erop.
-   Raakt geen CMS-velden (data-cms) of teksten aan. */
+/* Brand-decoratie voor nadirchajia.be — puur visueel. Geen CMS-velden aangeraakt. */
 (function () {
-  var C = { spring:'#4e9f54', coral:'#e0794b', iris:'#7a6fc2', cream:'#f4ede1', green:'#1f3c2c' };
+  var C = { spring:'#4e9f54', coral:'#e0794b', iris:'#7a6fc2', cream:'#f4ede1', green:'#1f3c2c', ochre:'#c68954', moss:'#8b9d7a' };
   function spark(c){ return "<svg viewBox='0 0 24 24' width='100%' height='100%'><path d='M12 0C13 9 15 11 24 12C15 13 13 15 12 24C11 15 9 13 0 12C9 11 11 9 12 0Z' fill='"+c+"'/></svg>"; }
   function arc(c){ return "<svg viewBox='0 0 120 62' width='100%' height='100%'><path d='M2 60 A58 58 0 0 1 118 60 Z' fill='"+c+"'/></svg>"; }
   var H="M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z";
@@ -10,11 +8,11 @@
   function rings(c){ return "<svg viewBox='0 0 120 120' width='100%' height='100%'><g fill='none' stroke='"+c+"' stroke-width='4'><circle cx='60' cy='60' r='56'/><circle cx='60' cy='60' r='40'/><circle cx='60' cy='60' r='24'/></g><circle cx='60' cy='60' r='7' fill='"+c+"'/></svg>"; }
   var SH = { spark:spark, arc:arc, clover:clover, rings:rings };
 
-  function decorate(sel, items){
+  function decorate(sel, items, peek){
     var c = document.querySelector(sel);
     if(!c) return;
     if(getComputedStyle(c).position === 'static') c.style.position = 'relative';
-    c.style.overflow = 'visible';
+    if(peek) c.style.overflow = 'visible';
     items.forEach(function(it){
       var d = document.createElement('div');
       d.setAttribute('aria-hidden','true');
@@ -25,22 +23,35 @@
   }
 
   function run(){
+    /* homepage foto's: shapes erachter (peek) + sticker erop */
     decorate('.hero-portrait', [
       { shape:'clover', color:'iris',  size:150, z:-1, rot:-12, pos:'right:-44px;top:-42px;' },
-      { shape:'spark',  color:'coral', size:60,  z:2,         pos:'left:-22px;bottom:46px;' },
-      { shape:'rings',  color:'ochre', size:120, z:-1,        pos:'left:-40px;top:-34px;' }
-    ]);
+      { shape:'spark',  color:'coral', size:60,  z:2,          pos:'left:-22px;bottom:46px;' },
+      { shape:'rings',  color:'ochre', size:120, z:-1,         pos:'left:-40px;top:-34px;' }
+    ], true);
     decorate('.method-image', [
-      { shape:'arc',   color:'spring', size:150, z:-1,       pos:'left:-36px;top:-30px;' },
-      { shape:'spark', color:'coral',  size:52,  z:2,        pos:'right:-16px;bottom:-16px;' }
-    ]);
-    decorate('.cta-final', [
-      { shape:'rings', color:'cream', size:180, z:0, op:0.16, pos:'left:48px;top:44px;' }
-    ]);
+      { shape:'arc',   color:'spring', size:150, z:-1, pos:'left:-36px;top:-30px;' },
+      { shape:'spark', color:'coral',  size:52,  z:2,  pos:'right:-16px;bottom:-16px;' }
+    ], true);
     decorate('.about-image', [
       { shape:'clover', color:'coral', size:146, z:-1, rot:14, pos:'right:-44px;bottom:-42px;' },
       { shape:'spark',  color:'iris',  size:54,  z:2,          pos:'left:-18px;top:-18px;' }
-    ]);
+    ], true);
+    /* secties: shapes binnen de hoeken (niet peeken, geen vierkant-uitlek) */
+    decorate('.cta-final', [ { shape:'rings', color:'cream', size:180, z:0, op:0.16, pos:'left:48px;top:44px;' } ], false);
+
+    /* wandelcoaching-pagina */
+    if(/wandelcoaching/.test(location.pathname)){
+      decorate('.hero', [
+        { shape:'clover', color:'spring', size:130, z:0, op:0.55, pos:'right:44px;top:40px;' },
+        { shape:'spark',  color:'coral',  size:58,  z:0,          pos:'right:150px;bottom:54px;' }
+      ], false);
+      decorate('.interest', [
+        { shape:'rings',  color:'cream', size:170, z:0, op:0.16, pos:'left:48px;top:46px;' },
+        { shape:'clover', color:'cream', size:150, z:0, op:0.18, pos:'right:30px;bottom:24px;' }
+      ], false);
+      decorate('.pillars-header', [ { shape:'spark', color:'iris', size:56, z:0, pos:'right:0;top:6px;' } ], false);
+    }
   }
   if(document.readyState !== 'loading') run(); else document.addEventListener('DOMContentLoaded', run);
 })();
