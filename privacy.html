@@ -530,13 +530,16 @@
 
   /* ===== BABL mobile fixes (brand-restyle) ===== */
   @media (max-width: 960px) {
-    .babl-decor { display: none !important; }
-    .method-image { min-height: 320px; }
+    .method { grid-template-columns: 1fr; column-gap: 0; }
+    .method-image { width: 100%; min-height: 0; aspect-ratio: 16 / 11; }
+    .method-content { width: 100%; }
   }
 
   /* ===== BABL card colour fix (brand-restyle) ===== */
   .included-item:nth-child(2) { background: var(--babl-lavender); }
   .included-item:nth-child(2) .num { color: var(--babl-coral); }
+  /* BABL hero corners */
+  .hero-portrait::before { border-radius: 20px; }
 </style>
 </head>
 <body>

@@ -25,8 +25,8 @@
   function run(){
     /* homepage foto's: shapes erachter (peek) + sticker erop */
     decorate('.hero-portrait', [
-      { shape:'spark',  color:'coral', size:60,  z:2,          pos:'left:-22px;bottom:46px;' },
-      { shape:'rings',  color:'ochre', size:120, z:-1,         pos:'left:-40px;top:-34px;' }
+      { shape:'spark', color:'coral', size:58,  z:2,  pos:'right:18px;top:18px;' },
+      { shape:'rings', color:'ochre', size:110, z:-1, pos:'right:28px;top:-46px;' }
     ], true);
     decorate('.method-image', [
       { shape:'arc',   color:'spring', size:150, z:-1, pos:'left:-36px;top:-30px;' },
