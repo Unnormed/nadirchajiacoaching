@@ -628,6 +628,32 @@
   section { box-shadow: 0 16px 44px rgba(31,60,44,.07); }
   .hero,.problem,.banner,.small-banner,.method,.acts,.included,.about,.practical,.cta-final { margin-top: 28px; }
   .about-img, .hero-portrait img, .method-image img { border-radius: 16px; }
+
+  /* ===== BABL blocks & cards (brand-restyle) ===== */
+  /* Methode: twee losse blokken i.p.v. één container */
+  .method { background: transparent; box-shadow: none; border-radius: 0; overflow: visible; column-gap: 28px; }
+  .method-image { overflow: visible; border-radius: 20px; box-shadow: 0 16px 44px rgba(31,60,44,.10); }
+  .method-content { border-radius: 20px; box-shadow: 0 16px 44px rgba(31,60,44,.10); }
+  .method-image img, .about-img, .hero-portrait img { border-radius: 20px; }
+  /* foto-containers niet clippen zodat shapes erachter uit piepen */
+  .about-image { overflow: visible; }
+  .hero-portrait { overflow: visible; }
+
+  /* "Wat je meeneemt": 6 gekleurde afgeronde kaartjes */
+  .included-item { padding: 30px 30px 34px; border: none; border-radius: 20px; }
+  .included-item h4, .included-item p { color: inherit; }
+  .included-item:nth-child(1) { background: var(--babl-cream);  color: var(--babl-green); }
+  .included-item:nth-child(1) .num { color: var(--babl-coral); }
+  .included-item:nth-child(2) { background: var(--babl-sand);   color: var(--babl-green); }
+  .included-item:nth-child(2) .num { color: var(--babl-iris); }
+  .included-item:nth-child(3) { background: var(--babl-iris);   color: var(--babl-cream); }
+  .included-item:nth-child(3) .num { color: var(--babl-cream); }
+  .included-item:nth-child(4) { background: var(--babl-spring); color: var(--babl-green-deep); }
+  .included-item:nth-child(4) .num { color: var(--babl-green-deep); }
+  .included-item:nth-child(5) { background: var(--babl-coral);  color: var(--babl-cream); }
+  .included-item:nth-child(5) .num { color: var(--babl-green-deep); }
+  .included-item:nth-child(6) { background: var(--babl-moss);   color: var(--babl-green-deep); }
+  .included-item:nth-child(6) .num { color: var(--babl-cream); }
 </style>
 </head>
 <body>
