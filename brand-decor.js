@@ -25,7 +25,6 @@
   function run(){
     /* homepage foto's: shapes erachter (peek) + sticker erop */
     decorate('.hero-portrait', [
-      { shape:'clover', color:'iris',  size:150, z:-1, rot:-12, pos:'right:-44px;top:-42px;' },
       { shape:'spark',  color:'coral', size:60,  z:2,          pos:'left:-22px;bottom:46px;' },
       { shape:'rings',  color:'ochre', size:120, z:-1,         pos:'left:-40px;top:-34px;' }
     ], true);
@@ -34,7 +33,6 @@
       { shape:'spark', color:'coral',  size:52,  z:2,  pos:'right:-16px;bottom:-16px;' }
     ], true);
     decorate('.about-image', [
-      { shape:'clover', color:'coral', size:146, z:-1, rot:14, pos:'right:-44px;bottom:-42px;' },
       { shape:'spark',  color:'iris',  size:54,  z:2,          pos:'left:-18px;top:-18px;' }
     ], true);
     /* secties: shapes binnen de hoeken (niet peeken, geen vierkant-uitlek) */
