@@ -15,7 +15,7 @@
     if(peek) c.style.overflow = 'visible';
     items.forEach(function(it){
       var d = document.createElement('div');
-      d.setAttribute('aria-hidden','true');
+      d.setAttribute('aria-hidden','true'); d.className='babl-decor';
       d.style.cssText = 'position:absolute;pointer-events:none;width:'+it.size+'px;height:'+it.size+'px;z-index:'+it.z+';'+it.pos+(it.rot?('transform:rotate('+it.rot+'deg);'):'')+(it.op?('opacity:'+it.op+';'):'');
       d.innerHTML = SH[it.shape](C[it.color]);
       c.appendChild(d);
@@ -38,19 +38,19 @@
       { shape:'spark',  color:'iris',  size:54,  z:2,          pos:'left:-18px;top:-18px;' }
     ], true);
     /* secties: shapes binnen de hoeken (niet peeken, geen vierkant-uitlek) */
-    decorate('.cta-final', [ { shape:'rings', color:'cream', size:180, z:0, op:0.16, pos:'left:48px;top:44px;' } ], false);
+    decorate('.cta-final', [ { shape:'rings', color:'cream', size:180, z:-1, op:0.16, pos:'left:48px;top:44px;' } ], false);
 
     /* wandelcoaching-pagina */
     if(/wandelcoaching/.test(location.pathname)){
       decorate('.hero', [
-        { shape:'clover', color:'spring', size:130, z:0, op:0.55, pos:'right:44px;top:40px;' },
-        { shape:'spark',  color:'coral',  size:58,  z:0,          pos:'right:150px;bottom:54px;' }
+        { shape:'clover', color:'spring', size:130, z:-1, op:0.55, pos:'right:44px;top:40px;' },
+        { shape:'spark',  color:'coral',  size:58,  z:-1,          pos:'right:150px;bottom:54px;' }
       ], false);
       decorate('.interest', [
-        { shape:'rings',  color:'cream', size:170, z:0, op:0.16, pos:'left:48px;top:46px;' },
-        { shape:'clover', color:'cream', size:150, z:0, op:0.18, pos:'right:30px;bottom:24px;' }
+        { shape:'rings',  color:'cream', size:170, z:-1, op:0.16, pos:'left:48px;top:46px;' },
+        { shape:'clover', color:'cream', size:150, z:-1, op:0.18, pos:'right:30px;bottom:24px;' }
       ], false);
-      decorate('.pillars-header', [ { shape:'spark', color:'iris', size:56, z:0, pos:'right:0;top:6px;' } ], false);
+      decorate('.pillars-header', [ { shape:'spark', color:'iris', size:56, z:-1, pos:'right:0;top:6px;' } ], false);
     }
   }
   if(document.readyState !== 'loading') run(); else document.addEventListener('DOMContentLoaded', run);
