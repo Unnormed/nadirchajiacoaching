@@ -557,6 +557,12 @@
 
   /* ===== BABL pill spacing fix (brand-restyle) ===== */
   .kicker, .hero-kicker, .method-kicker, .section-header .kicker, .about-content .kicker { margin-bottom: 26px; }
+
+  /* ===== BABL method full-width stack (brand-restyle) — overrides all, fixes narrow method ===== */
+  .method { display: block !important; min-height: 0 !important; column-gap: 0 !important; overflow: visible !important; }
+  .method-image { display: block !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; aspect-ratio: auto !important; height: clamp(220px, 42vw, 420px) !important; border-radius: 20px !important; overflow: hidden !important; }
+  .method-image img, .method-img { width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 20px !important; }
+  .method-content { display: block !important; width: 100% !important; max-width: 100% !important; margin: 24px 0 0 !important; }
 </style>
 </head>
 <body>
