@@ -17,7 +17,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -39,7 +39,6 @@
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --font-display-heavy: 'Anton', 'Cormorant Garamond', sans-serif;
 
     --container-max: 1280px;
     --radius: 4px;
@@ -1229,20 +1228,29 @@
     .cookie-banner { bottom: 12px; left: 12px; right: 12px; }
   }
 
-  /* ===== BABL nieuwe stijl-laag (brand-restyle) ===== */
-  .hero h1 { font-family: var(--font-display-heavy); letter-spacing: 0; }
-  .hero h1 em { font-style: normal; color: var(--babl-coral); }
-  .cta-final h2 { font-family: var(--font-display-heavy); letter-spacing: 0; }
+  
+  /* ===== BABL brand layer — in lijn met social (brand-restyle) ===== */
+  .hero h1 em, .section-header h2 em, .included-left h2 em, .about-content h2 em { color: var(--babl-coral); }
+  .acts-grid .act-card:nth-child(1) .act-number { color: var(--babl-spring); }
+  .acts-grid .act-card:nth-child(2) .act-number { color: var(--babl-coral); }
+  .acts-grid .act-card:nth-child(3) .act-number { color: var(--babl-iris); }
+  .included-item:nth-child(3n+1) .num { color: var(--babl-spring); }
+  .included-item:nth-child(3n+2) .num { color: var(--babl-coral); }
+  .included-item:nth-child(3n+3) .num { color: var(--babl-iris); }
   .btn-primary:hover { background: var(--babl-spring); color: var(--babl-green-deep); }
-  .btn-ghost:hover { border-color: var(--babl-spring); color: var(--babl-spring); }
-  .hero-kicker::after, .section-header .kicker::after, .cta-final .kicker::after, .method-kicker::after {
-    content: ''; display: inline-block; width: 13px; height: 13px; margin-left: 10px; vertical-align: middle;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 0C13 9 15 11 24 12C15 13 13 15 12 24C11 15 9 13 0 12C9 11 11 9 12 0Z' fill='%23e0794b'/></svg>") no-repeat center/contain;
+  .hero-kicker::after, .section-header .kicker::after, .about-content .kicker::after, .method-kicker::after, .cta-final .kicker::after {
+    content:''; display:inline-block; width:13px; height:13px; margin-left:10px; vertical-align:middle;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 0C13 9 15 11 24 12C15 13 13 15 12 24C11 15 9 13 0 12C9 11 11 9 12 0Z' fill='%23e0794b'/></svg>") no-repeat center/contain;
   }
-  .cta-final::after {
-    content: ''; position: absolute; right: -34px; bottom: -34px; width: 230px; height: 230px;
-    opacity: 0.13; pointer-events: none; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='%23f4ede1'><g transform='rotate(45 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(135 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(225 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(315 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g></svg>") no-repeat center/contain;
+  .section-header h2::after, .included-left h2::after {
+    content:''; display:block; width:92px; height:18px; margin-top:14px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 32'><path d='M6 18 C22 4,38 32,56 18 S92 4,114 18' fill='none' stroke='%23e0794b' stroke-width='8' stroke-linecap='round'/></svg>") no-repeat left center/contain;
   }
+  .hero-portrait, .method-image, .about-image { position: relative; }
+  .method-image::after { content:''; position:absolute; z-index:-1; width:48%; height:48%; right:-26px; top:-26px; border-radius:50%; background:var(--babl-spring); opacity:.20; filter:blur(36px); pointer-events:none; }
+  .about-image::after { content:''; position:absolute; z-index:-1; width:48%; height:48%; left:-26px; bottom:-26px; border-radius:50%; background:var(--babl-iris); opacity:.22; filter:blur(36px); pointer-events:none; }
+  .hero-portrait::after { content:''; position:absolute; z-index:-1; width:60%; height:55%; right:-30px; bottom:-26px; border-radius:50%; background:var(--babl-coral); opacity:.16; filter:blur(42px); pointer-events:none; }
+  .cta-final::after { content:''; position:absolute; right:-30px; bottom:-34px; width:210px; height:210px; opacity:.12; pointer-events:none; background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='%23f4ede1'><g transform='rotate(45 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(135 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(225 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(315 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g></svg>") no-repeat center/contain; }
 </style>
 </head>
 <body>
