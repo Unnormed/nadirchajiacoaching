@@ -495,6 +495,14 @@
   .included-item:nth-child(5) .num { color: var(--babl-green-deep); }
   .included-item:nth-child(6) { background: var(--babl-moss);   color: var(--babl-green-deep); }
   .included-item:nth-child(6) .num { color: var(--babl-cream); }
+
+  /* ===== BABL fixes & hero bubble (brand-restyle) ===== */
+  .method-image::before { display: none; }
+  .method-image { background: transparent; }
+  .portrait-label { left: 22px; right: auto; bottom: 22px; background: var(--babl-cream); padding: 14px 20px 15px; border-radius: 18px 18px 18px 4px; box-shadow: 0 10px 30px rgba(15,30,22,.28); max-width: 84%; }
+  .portrait-label .name { color: var(--babl-green); }
+  .portrait-label .title { color: var(--babl-clay); opacity: 1; }
+  .portrait-label::after { content:''; position:absolute; left:16px; bottom:-8px; width:18px; height:18px; background:var(--babl-cream); transform:rotate(45deg); border-bottom-left-radius:4px; }
 </style>
 </head>
 <body>
