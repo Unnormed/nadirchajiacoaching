@@ -1107,9 +1107,9 @@
 
   /* ===== BABL mobile fixes (brand-restyle) ===== */
   @media (max-width: 960px) {
-    .method { display: block; }
-    .method-image { display: block; width: 100%; min-height: 0; aspect-ratio: 16 / 11; }
-    .method-content { display: block; width: 100%; margin-top: 16px; }
+    .method { display: block !important; }
+    .method-image { display: block !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; aspect-ratio: auto !important; height: 56vw !important; min-height: 200px; max-height: 360px; }
+    .method-content { display: block !important; width: 100% !important; margin: 16px 0 0 !important; }
   }
 
   /* ===== BABL card colour fix (brand-restyle) ===== */
@@ -1117,6 +1117,9 @@
   .included-item:nth-child(2) .num { color: var(--babl-coral); }
   /* BABL hero corners */
   .hero-portrait::before { border-radius: 20px; }
+
+  /* ===== BABL pill spacing fix (brand-restyle) ===== */
+  .kicker, .hero-kicker, .method-kicker, .section-header .kicker, .about-content .kicker { margin-bottom: 26px; }
 </style>
 </head>
 <body>
