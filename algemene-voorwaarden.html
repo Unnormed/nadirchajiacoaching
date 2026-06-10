@@ -427,6 +427,13 @@
 
   /* eind-CTA: duidelijke klaver + accent */
   .cta-final::after { content:''; position:absolute; right:-46px; bottom:-56px; width:300px; height:300px; opacity:.20; pointer-events:none; background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='%23f4ede1'><g transform='rotate(45 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(135 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(225 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g><g transform='rotate(315 120 120)'><path d='M120 120C80 84 60 60 60 36C60 16 74 4 92 4C106 4 116 14 120 26C124 14 134 4 148 4C166 4 180 16 180 36C180 60 160 84 120 120Z'/></g></svg>") no-repeat center/contain; }
+
+  /* ===== BABL shapes & lightness (brand-restyle) ===== */
+  :root { --radius: 20px; }
+  body { background: #f8f2e6; }
+  section { box-shadow: 0 16px 44px rgba(31,60,44,.07); }
+  .hero,.problem,.banner,.small-banner,.method,.acts,.included,.about,.practical,.cta-final { margin-top: 28px; }
+  .about-img, .hero-portrait img, .method-image img { border-radius: 16px; }
 </style>
 </head>
 <body>
